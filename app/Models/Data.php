@@ -10,6 +10,7 @@ class Data extends Model
     use HasFactory;
 
     protected $table = "data";
+    protected $fillable = ['nama','alamat','user_id'];
 
     public function User()
     {

@@ -99,93 +99,46 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="col s12">
             <div class="container">
 
+            @if ($message = Session::get('sukses'))
                 <div class="card">
                     <div class="card-content">
-                        <p class="caption mb-0">We use <a
-                                href="https://kinark.github.io/Materialize-stepper/?feedback_email=r%40m.com&feedback_password=sdasdasd#!">Stepper</a>
-                            as a Form Wizard. Stepper is a fundamental part of material design
-                            guidelines. It makes forms simplier and a lot of other stuffs.</p>
+                        <p class="caption mb-0">{{ $message }}</p>
                     </div>
                 </div>
+                @endif
+
 
                 <!-- Non Linear Stepper -->
 
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <h4 class="card-title">Pengajuan Dupak Secara Online</h4>
-                                    <p> Berkas usulan disimpan dalam file utama yang terdiri dari file administrasi dan
-                                        file bukti fisik.</p>
-                                </div>
+                            <form method="post" action="{{url('/pengajuandupak/store')}}">
+                                {{ csrf_field() }}
 
-                                <ul class="stepper" id="nonLinearStepper">
-                                    <li class="step active">
-                                        <div class="step-title waves-effect">Step 1 (File Administrasi)</div>
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Pengajuan Dupak Secara Online</h4>
+                                        <p> Berkas usulan disimpan dalam file utama yang terdiri dari file administrasi
+                                            dan
+                                            file bukti fisik.</p>
+                                    </div>
 
-                                        <div class="step-content">
-                                            <div class="row">
+                                    <ul class="stepper" id="nonLinearStepper">
+                                        <li class="step active">
+                                            <div class="step-title waves-effect">Step 1 (File Administrasi)</div>
 
-                                                <p>
-                                                    file administrasi terdiri dari file-file administrasi ( DUPAK, SPMK,
-                                                    PAK terakhir, SK kenaikan pangkat terakhir, SK kenaikan jabatan,
-                                                    SPP, DLL)
-                                                </p>
-
-
-                                                <div class="file-field input-field">
-                                                    <div class="btn">
-                                                        <span>File</span>
-                                                        <input type="file">
-                                                    </div>
-                                                    <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="step-actions">
-                                                <div class="row">
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button class="red btn btn-reset" type="reset">
-                                                            <i class="material-icons left">clear</i>Reset
-                                                        </button>
-                                                    </div>
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button class="btn btn-light previous-step" disabled>
-                                                            <i class="material-icons left">arrow_back</i>
-                                                            Prev
-                                                        </button>
-                                                    </div>
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button
-                                                            class="waves-effect waves dark btn btn-primary next-step"
-                                                            type="submit">
-                                                            Next
-                                                            <i class="material-icons right">arrow_forward</i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="step">
-                                        <div class="step-title waves-effect">Step 2 (File Bukti Fisik)</div>
-                                        <div class="step-content">
-                                            <div class="row">
+                                            <div class="step-content">
                                                 <div class="row">
 
                                                     <p>
-                                                        file bukti fisik terdiri dari folder unsur kegiatan dan
-                                                        diberinama unsur kegiatan ( I. Pendidikan, II. Operasi Teknologi
-                                                        Informasi, III. Implementasi Teknologi Informasi, IV.
-                                                        Pengembangan Profesi, V. Penunjang)
+                                                        file administrasi terdiri dari file-file administrasi ( DUPAK,
+                                                        SPMK,
+                                                        PAK terakhir, SK kenaikan pangkat terakhir, SK kenaikan jabatan,
+                                                        SPP, DLL)
                                                     </p>
 
-
-                                                    <div class="file-field input-field">
+                                                    <!-- <div class="file-field input-field">
                                                         <div class="btn">
                                                             <span>File</span>
                                                             <input type="file">
@@ -193,70 +146,161 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="file-path-wrapper">
                                                             <input class="file-path validate" type="text">
                                                         </div>
+                                                    </div> -->
+
+                                                    <div class="form-group">
+                                                        <label>Nama</label>
+                                                        <input type="text" name="nama" class="form-control"
+                                                            placeholder="Nama pegawai .." required>
+
+                                                        @if($errors->has('nama'))
+                                                        <div class="text-danger">
+                                                            {{ $errors->first('nama')}}
+                                                        </div>
+                                                        @endif
+
                                                     </div>
 
                                                 </div>
-                                            </div>
 
-                                            <div class="step-actions">
+                                                <div class="step-actions">
+                                                    <div class="row">
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="red btn btn-reset" type="reset">
+                                                                <i class="material-icons left">clear</i>Reset
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="btn btn-light previous-step" disabled>
+                                                                <i class="material-icons left">arrow_back</i>
+                                                                Prev
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button
+                                                                class="waves-effect waves dark btn btn-primary next-step"
+                                                                type="submit">
+                                                                Next
+                                                                <i class="material-icons right">arrow_forward</i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="step">
+                                            <div class="step-title waves-effect">Step 2 (File Bukti Fisik)</div>
+                                            <div class="step-content">
                                                 <div class="row">
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button class="red btn btn-reset" type="reset">
-                                                            <i class="material-icons left">clear</i>Reset
-                                                        </button>
+                                                    <div class="row">
+
+                                                        <p>
+                                                            file bukti fisik terdiri dari folder unsur kegiatan dan
+                                                            diberinama unsur kegiatan ( I. Pendidikan, II. Operasi
+                                                            Teknologi
+                                                            Informasi, III. Implementasi Teknologi Informasi, IV.
+                                                            Pengembangan Profesi, V. Penunjang)
+                                                        </p>
+
+                                                        <!-- <div class="file-field input-field">
+                                                            <div class="btn">
+                                                                <span>File</span>
+                                                                <input type="file">
+                                                            </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input class="file-path validate" type="text">
+                                                            </div>
+                                                        </div> -->`
+
+                                                        <div class="form-group">
+                                                        <label>Alamat</label>
+                                                        <input type="text" name="alamat" class="form-control"
+                                                            placeholder="Nama pegawai .." required>
+
+                                                        @if($errors->has('alamat'))
+                                                        <div class="text-danger">
+                                                            {{ $errors->first('alamat')}}
+                                                        </div>
+                                                        @endif
+
                                                     </div>
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button class="btn btn-light previous-step">
-                                                            <i class="material-icons left">arrow_back</i>
-                                                            Prev
-                                                        </button>
+
+                                                    <div class="form-group">
+                                                        <label>User ID</label>
+                                                        <input type="text" name="user_id" class="form-control"
+                                                            placeholder="Nama pegawai .." value="{{Auth::user()->id}}" required>
+
+                                                        @if($errors->has('user_id'))
+                                                        <div class="text-danger">
+                                                            {{ $errors->first('user"_id')}}
+                                                        </div>
+                                                        @endif
+
                                                     </div>
-                                                    <div class="col m4 s12 mb-3">
-                                                        <button
-                                                            class="waves-effect waves dark btn btn-primary next-step"
-                                                            type="submit">
-                                                            Next
-                                                            <i class="material-icons right">arrow_forward</i>
-                                                        </button>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="step-actions">
+                                                    <div class="row">
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="red btn btn-reset" type="reset">
+                                                                <i class="material-icons left">clear</i>Reset
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="btn btn-light previous-step">
+                                                                <i class="material-icons left">arrow_back</i>
+                                                                Prev
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button
+                                                                class="waves-effect waves dark btn btn-primary next-step"
+                                                                type="submit">
+                                                                Next
+                                                                <i class="material-icons right">arrow_forward</i>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="step">
-                                        <div class="step-title waves-effect">Step 3 (Submit)</div>
-                                        <div class="step-content">
-                                            <div class="row">
-
-                                                <p>
-                                                    pastikan file yang anda kirim telah benar
-                                                </p>
-
-                                            </div>
-                                            <div class="row">
-
-                                            </div>
-                                            <div class="row">
-
-                                            </div>
-                                            <div class="step-actions">
+                                        </li>
+                                        <li class="step">
+                                            <div class="step-title waves-effect">Step 3 (Submit)</div>
+                                            <div class="step-content">
                                                 <div class="row">
-                                                    <div class="col m6 s12 mb-1">
-                                                        <button class="red btn mr-1 btn-reset" type="reset">
-                                                            <i class="material-icons">clear</i>
-                                                            Reset
-                                                        </button>
-                                                    </div>
-                                                    <div class="col m6 s12 mb-1">
-                                                        <button class="waves-effect waves-dark btn btn-primary"
-                                                            type="submit">Submit</button>
+
+                                                    <p>
+                                                        pastikan file yang anda kirim telah benar
+                                                    </p>
+
+                                                </div>
+                                                <div class="row">
+
+                                                </div>
+                                                <div class="row">
+
+                                                </div>
+                                                <div class="step-actions">
+                                                    <div class="row">
+                                                        <div class="col m6 s12 mb-1">
+                                                            <button class="red btn mr-1 btn-reset" type="reset">
+                                                                <i class="material-icons">clear</i>
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m6 s12 mb-1">
+                                                            <button class="waves-effect waves-dark btn btn-primary"
+                                                                type="submit">Submit</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -930,7 +974,6 @@ License: You must have a valid license purchased only from themeforest(the above
         @endforeach
     </tbody>
 </table>
-
 
 <!-- BEGIN VENDOR JS-->
 <script src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/vendors.min.js">
