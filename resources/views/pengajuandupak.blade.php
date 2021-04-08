@@ -228,7 +228,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="form-group">
                                                         <label>User ID</label>
                                                         <input type="text" name="user_id" class="form-control"
-                                                            placeholder="Nama pegawai .." value="{{Auth::user()->id}}" required>
+                                                            placeholder="Nama pegawai .." value="{{Auth::user()->id}}" required readonly>
 
                                                         @if($errors->has('user_id'))
                                                         <div class="text-danger">

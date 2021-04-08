@@ -93,14 +93,34 @@ License: You must have a valid license purchased only from themeforest(the above
                                 href="javascript:void(0);" data-target="notifications-dropdown"><i
                                     class="material-icons">notifications_none<small
                                         class="notification-badge">5</small></i></a></li>
+
+                        @if(Auth::user()->image)
                         <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);"
                                 data-target="profile-dropdown"><span class="avatar-status avatar-online"><img
-                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
-                                        alt="avatar"><i></i></span></a></li>
+                                        src="{{asset('/storage/images/'.Auth::user()->image)}}" alt="profile_image"
+                                        style="width: 30px;height: 30px; padding: 0px; margin: 0px; "><i></i></span></a>
+                        </li>
+                        @endif
+
                         <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#"
                                 data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a>
                         </li>
+
                     </ul>
+
+                    <div class="card-body">
+                        <form action="{{url('/home')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="image">
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
+
+                    {{-- @if(Auth::user()->image)
+<img class="image rounded-circle" src="{{asset('/storage/images/'.Auth::user()->image)}}" alt="profile_image"
+                    style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+                    @endif --}}
+
                     <!-- translation-button-->
                     <ul class="dropdown-content" id="translation-dropdown">
                         <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="en"><i
@@ -324,7 +344,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     class="menu-title" data-i18n="Form Wizard">Pengajuan Dupak</span></a>
                         </li>
 
-
                         <li class="bold"><a class="<?php if ($page == "historipengajuan") echo "active"; ?>"
                                 href="{{url('/historipengajuan')}}"><i class="material-icons">grid_on</i><span
                                     class="menu-title" data-i18n="Data Tables">Histori
@@ -332,7 +351,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         </li>
                     </ul>
                 </div>
-
 
             </li>
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i
@@ -812,10 +830,10 @@ License: You must have a valid license purchased only from themeforest(the above
             </li>
 
             <script>
-            $(".sidenav li").on("click", function() {
-                $(".sidenav li").removeClass("active");
-                $(this).addClass("active");
-            });
+                $(".sidenav li").on("click", function() {
+                    $(".sidenav li").removeClass("active");
+                    $(this).addClass("active");
+                });
             </script>
 
             <li class="navigation-header"><a class="navigation-header-text">Charts</a><i
