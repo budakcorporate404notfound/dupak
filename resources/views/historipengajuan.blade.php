@@ -135,11 +135,20 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                     <tbody>
 
-                                                        @foreach($Data as $p)
+                                                        @foreach($Data as $a)
                                                         <tr>
-                                                            <td>{{ $p->nama }}</td>
-                                                            <td>{{ $p->alamat }}</td>
-                                                            <td>{{ $p->user_id }}</td>
+
+                                                            @foreach($User as $t)
+                                                            <td>
+                                                                {{ $t->name }}
+                                                            </td>
+                                                            @endforeach
+
+                                                            <td>
+                                                                {{ $a->nama }}
+                                                            </td>
+
+                                                            <td>{{ $a->alamat }}</td>
                                                             <td>61</td>
                                                             <td>2011/04/25</td>
                                                             <td>$320,800</td>

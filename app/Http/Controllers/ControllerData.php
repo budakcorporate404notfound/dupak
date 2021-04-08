@@ -27,9 +27,10 @@ class ControllerData extends Controller
     public function Historipengajuan()
     {
         $Data = Data::all();
-        return 
-        
-        view('historipengajuan', ['Data' => $Data]);
+        $User = User::all();
+        return
+
+            view('historipengajuan', compact('Data', 'User'));
     }
 
     public function Pengajuandupakstore(Request $request)
@@ -41,25 +42,25 @@ class ControllerData extends Controller
             'user_id' => 'required'
         ]);
 
-    	// $this->validate($request,[
-    	// 	'nama' => 'required',
+        // $this->validate($request,[
+        // 	'nama' => 'required',
         //     'alamat' => 'required',
         //     'user_id' => 'required'
-    	// ]);
- 
+        // ]);
+
         Data::create([
-    		'nama' => $request->nama,
+            'nama' => $request->nama,
             'alamat' => $request->alamat,
             'user_id' => $request->user_id
-    	]);
+        ]);
         //     Session::flash('sukses','Ini notifikasi SUKSES');
         // return back();
-        
+
         if ($validator->fails()) {
-            Session::flash('gagal','Ini notifikasi GAGAL');
+            Session::flash('gagal', 'Ini notifikasi GAGAL');
             return back();
         } else {
-            Session::flash('sukses','Ini notifikasi SUKSES');
+            Session::flash('sukses', 'Ini notifikasi SUKSES');
             return back();
         }
     }
