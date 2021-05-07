@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\User;
 
 /*
@@ -15,40 +17,26 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify' => true]);
 
-Auth::routes();
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/home', [App\Http\Controllers\HomeController::class, 'Upload'])->name('upload');
+    Route::get('/profile', [App\Http\Controllers\ControllerData::class, 'Profile'])->name('Profile');
+    Route::post('/profile', [App\Http\Controllers\HomeController::class, 'Upload'])->name('Upload');
+    Route::get('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'index'])->name('index');
+    Route::post('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'store'])->name('change.password');
+    Route::get('/logout', [\App\Http\Controllers\ControllerData::class, 'Logout']);
 
-Auth::routes();
+    Route::middleware(['admin'])->group(function () {
+       /* masukan code nya */
+    Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
+    });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::post('/home', 'HomeController@upload');
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'Upload'])->name('upload');
-
-// Route::get('/data', [App\Http\Controllers\ControllerData::class, 'Data'])->name('data');
-
-Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
-Route::get('/historipengajuan', [App\Http\Controllers\ControllerData::class, 'Historipengajuan'])->name('Historipengajuan');
-Route::get('/profile', [App\Http\Controllers\ControllerData::class, 'Profile'])->name('Profile');
-Route::post('/profile', [App\Http\Controllers\HomeController::class, 'Upload'])->name('Upload');
-
-Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
-
-Route::get('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'index'])->name('index');
-Route::post('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'store'])->name('change.password');
-// Route::get('/change-password', 'ChangePasswordController@index');
-
-// Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
-
-Route::get('/logout', [\App\Http\Controllers\ControllerData::class, 'Logout']);
+    Route::middleware(['user'])->group(function () {
+        
+        Route::get('/historipengajuan', [App\Http\Controllers\ControllerData::class, 'Historipengajuan'])->name('Historipengajuan');
+        Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
+    });
+});

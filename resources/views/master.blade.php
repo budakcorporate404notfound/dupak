@@ -1211,8 +1211,8 @@ License: You must have a valid license purchased only from themeforest(the above
             const url = $(this).attr('href');
             swal({
                 title: 'Apakah kamu yakin',
-                text: 'Ingin keluar dari aplikasi SulapBMN ?',
-                icon: 'warning',
+                text: 'Ingin keluar dari aplikasi dupak online ?',
+                icon: 'info',
                 buttons: ["Cancel", "Yes!"],
             }).then(function(value) {
                 if (value) {

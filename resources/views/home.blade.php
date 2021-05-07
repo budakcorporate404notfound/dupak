@@ -4,19 +4,36 @@ $page = "home";
 @extends('master')
 @section('konten')
 <!-- BEGIN: Page Main-->
+
 <div id="main">
     <div class="row">
         <div class="content-wrapper-before blue-grey lighten-5"></div>
         <div class="col s12">
             <div class="container">
                 <div class="section">
+
+                    @if ($message = Session::get('gagaladmin'))
+                    <div class="card-alert card gradient-45deg-amber-amber">
+                        <div class="card-content white-text">
+                            <p>
+                                <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
+                        </div>
+                        <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    @endif
+
                     <!-- Current balance & total transactions cards-->
                     <div class="row vertical-modern-dashboard">
                         <div class="col s12 m4 l4">
                             <!-- Current Balance -->
+
                             <div class="card animate fadeLeft">
+
                                 <div class="card-content">
-                                    <h6 class="mb-0 mt-0 display-flex justify-content-between">Current Balance <i class="material-icons float-right">more_vert</i>
+                                    <h6 class="mb-0 mt-0 display-flex justify-content-between">Current Balance <i
+                                            class="material-icons float-right">more_vert</i>
                                     </h6>
                                     <p class="medium-small">This billing cycle</p>
                                     <div class="current-balance-container">
@@ -28,13 +45,12 @@ $page = "home";
                             </div>
                         </div>
 
-
-
                         <div class="col s12 m8 l8 animate fadeRight">
                             <!-- Total Transaction -->
                             <div class="card">
                                 <div class="card-content">
-                                    <h4 class="card-title mb-0">Total Transaction <i class="material-icons float-right">more_vert</i></h4>
+                                    <h4 class="card-title mb-0">Total Transaction <i
+                                            class="material-icons float-right">more_vert</i></h4>
                                     <p class="medium-small">This month transaction</p>
                                     <div class="total-transaction-container">
                                         <div id="total-transaction-line-chart" class="total-transaction-shadow">
@@ -52,7 +68,8 @@ $page = "home";
                             <!-- User Statistics -->
                             <div class="card user-statistics-card animate fadeLeft">
                                 <div class="card-content">
-                                    <h4 class="card-title mb-0">User Statistics <i class="material-icons float-right">more_vert</i></h4>
+                                    <h4 class="card-title mb-0">User Statistics <i
+                                            class="material-icons float-right">more_vert</i></h4>
                                     <div class="row">
                                         <div class="col s12 m6">
                                             <ul class="collection border-none mb-0">
@@ -74,7 +91,8 @@ $page = "home";
                                         </div>
                                     </div>
                                     <div class="user-statistics-container">
-                                        <div id="user-statistics-bar-chart" class="user-statistics-shadow ct-golden-section"></div>
+                                        <div id="user-statistics-bar-chart"
+                                            class="user-statistics-shadow ct-golden-section"></div>
                                     </div>
                                 </div>
                             </div>
@@ -83,26 +101,33 @@ $page = "home";
                             <!-- Recent Buyers -->
                             <div class="card recent-buyers-card animate fadeUp">
                                 <div class="card-content">
-                                    <h4 class="card-title mb-0">Recent Buyers <i class="material-icons float-right">more_vert</i></h4>
+                                    <h4 class="card-title mb-0">Recent Buyers <i
+                                            class="material-icons float-right">more_vert</i></h4>
                                     <p class="medium-small pt-2">Today</p>
                                     <ul class="collection mb-0">
                                         <li class="collection-item avatar">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="" class="circle" />
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                                alt="" class="circle" />
                                             <p class="font-weight-600">John Doe</p>
                                             <p class="medium-small">18, January 2019</p>
-                                            <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                                            <a href="#!" class="secondary-content"><i
+                                                    class="material-icons">star_border</i></a>
                                         </li>
                                         <li class="collection-item avatar">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-3.png" alt="" class="circle" />
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-3.png"
+                                                alt="" class="circle" />
                                             <p class="font-weight-600">Adam Garza</p>
                                             <p class="medium-small">20, January 2019</p>
-                                            <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                                            <a href="#!" class="secondary-content"><i
+                                                    class="material-icons">star_border</i></a>
                                         </li>
                                         <li class="collection-item avatar">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-5.png" alt="" class="circle" />
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-5.png"
+                                                alt="" class="circle" />
                                             <p class="font-weight-600">Jennifer Rice</p>
                                             <p class="medium-small">25, January 2019</p>
-                                            <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
+                                            <a href="#!" class="secondary-content"><i
+                                                    class="material-icons">star_border</i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -134,7 +159,8 @@ $page = "home";
                                         <p class="mb-0 pt-8">1,12,900</p>
                                     </div>
                                     <div class="col s7 m7 right-align">
-                                        <i class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">perm_identity</i>
+                                        <i
+                                            class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">perm_identity</i>
                                         <p class="mb-0">Total Clients</p>
                                     </div>
                                 </div>
@@ -155,7 +181,8 @@ $page = "home";
                         <div class="col s12 m6 l8">
                             <div class="card subscriber-list-card animate fadeRight">
                                 <div class="card-content pb-1">
-                                    <h4 class="card-title mb-0">Subscriber List <i class="material-icons float-right">more_vert</i></h4>
+                                    <h4 class="card-title mb-0">Subscriber List <i
+                                            class="material-icons float-right">more_vert</i></h4>
                                 </div>
                                 <table class="subscription-table responsive-table highlight">
                                     <thead>
@@ -176,7 +203,8 @@ $page = "home";
                                             <td><span class="badge pink lighten-5 pink-text text-accent-2">Close</span>
                                             </td>
                                             <td>$ 1000.00</td>
-                                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
+                                            <td class="center-align"><a href="#"><i
+                                                        class="material-icons pink-text">clear</i></a></td>
                                         </tr>
                                         <tr>
                                             <td>Aldin Rakić</td>
@@ -185,7 +213,8 @@ $page = "home";
                                             <td><span class="badge green lighten-5 green-text text-accent-4">Open</span>
                                             </td>
                                             <td>$ 3000.00</td>
-                                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
+                                            <td class="center-align"><a href="#"><i
+                                                        class="material-icons pink-text">clear</i></a></td>
                                         </tr>
                                         <tr>
                                             <td>İris Yılmaz</td>
@@ -194,7 +223,8 @@ $page = "home";
                                             <td><span class="badge green lighten-5 green-text text-accent-4">Open</span>
                                             </td>
                                             <td>$ 2000.00</td>
-                                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
+                                            <td class="center-align"><a href="#"><i
+                                                        class="material-icons pink-text">clear</i></a></td>
                                         </tr>
                                         <tr>
                                             <td>Lidia Livescu</td>
@@ -203,7 +233,8 @@ $page = "home";
                                             <td><span class="badge pink lighten-5 pink-text text-accent-2">Close</span>
                                             </td>
                                             <td>$ 1100.00</td>
-                                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
+                                            <td class="center-align"><a href="#"><i
+                                                        class="material-icons pink-text">clear</i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -218,7 +249,8 @@ $page = "home";
                                 <div class="col s12 border-bottom-1 pb-0 pt-1">
                                     <div class="row">
                                         <div class="col s2 pr-0 center">
-                                            <i class="material-icons vertical-text-middle"><a href="#" class="sidenav-close">clear</a></i>
+                                            <i class="material-icons vertical-text-middle"><a href="#"
+                                                    class="sidenav-close">clear</a></i>
                                         </div>
                                         <div class="col s10 pl-0">
                                             <ul class="tabs">
@@ -245,10 +277,14 @@ $page = "home";
                             <div class="slide-out-right-body row pl-3">
                                 <div id="messages" class="col s12 pb-0">
                                     <div class="collection border-none mb-0">
-                                        <input class="header-search-input mt-4 mb-2" type="text" name="Search" placeholder="Search Messages" />
+                                        <input class="header-search-input mt-4 mb-2" type="text" name="Search"
+                                            placeholder="Search Messages" />
                                         <ul class="collection right-sidebar-chat p-0 mb-0">
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -258,8 +294,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">5.00 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-1.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-1.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -269,8 +308,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">4.14 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-2.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-2.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -280,8 +322,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">4.14 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-3.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-3.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -291,8 +336,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">9.00 PM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-4.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-4.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -302,8 +350,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">4.14 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-5.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-5.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -313,8 +364,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">5.15 PM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-6.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-6.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -324,8 +378,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">8.00 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -335,8 +392,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">9.53 PM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-8.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-8.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -346,8 +406,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">4.20 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-1.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-1.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -357,8 +420,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">5.20 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-9.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-9.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -368,8 +434,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">12.00 AM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-10.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-10.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -379,8 +448,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">11.14 PM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-off avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-11.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-off avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-11.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -390,8 +462,11 @@ $page = "home";
                                                 </div>
                                                 <span class="secondary-content medium-small">7.30 PM</span>
                                             </li>
-                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                                <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-12.png" alt="avatar" />
+                                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pb-0"
+                                                data-target="slide-out-chat">
+                                                <span class="avatar-status avatar-online avatar-50"><img
+                                                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-12.png"
+                                                        alt="avatar" />
                                                     <i></i>
                                                 </span>
                                                 <div class="user-content">
@@ -556,7 +631,9 @@ $page = "home";
                                                 <p class="timeline-text">Here are some news feed interactions
                                                     concepts.</p>
                                                 <div class="timeline-content">
-                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png" alt="document" height="30" width="25" class="mr-1">Registration.doc
+                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png"
+                                                        alt="document" height="30" width="25"
+                                                        class="mr-1">Registration.doc
                                                 </div>
                                             </li>
                                             <li class="timeline-items timeline-icon-indigo active">
@@ -565,7 +642,8 @@ $page = "home";
                                                 <p class="timeline-text">Here are some news feed interactions
                                                     concepts.</p>
                                                 <div class="timeline-content">
-                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png" alt="document" height="30" width="25" class="mr-1">Activity.doc
+                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png"
+                                                        alt="document" height="30" width="25" class="mr-1">Activity.doc
                                                 </div>
                                             </li>
                                             <li class="timeline-items timeline-icon-orange">
@@ -597,7 +675,9 @@ $page = "home";
                                                 <p class="timeline-text">Here are some news feed interactions
                                                     concepts.</p>
                                                 <div class="timeline-content">
-                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png" alt="document" height="30" width="25" class="mr-1">Database-log.doc
+                                                    <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/icon/pdf.png"
+                                                        alt="document" height="30" width="25"
+                                                        class="mr-1">Database-log.doc
                                                 </div>
                                             </li>
                                         </ul>
@@ -631,25 +711,31 @@ $page = "home";
                         <li class="chat-body">
                             <ul class="collection">
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">hello!</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">How can we help? We're here for you!</p>
                                     </div>
                                 </li>
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">I am looking for the best admin template.?</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">Materialize admin is the responsive materializecss
                                             admin template.</p>
@@ -661,19 +747,24 @@ $page = "home";
                                 </li>
 
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">Ohh! very nice</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">Thank you.</p>
                                     </div>
                                 </li>
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">How can I purchase it?</p>
@@ -684,36 +775,44 @@ $page = "home";
                                     <p>9:00 a.m.</p>
                                 </li>
 
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">From ThemeForest.</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">Only $24</p>
                                     </div>
                                 </li>
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">Ohh! Thank you.</p>
                                     </div>
                                 </li>
                                 <li class="collection-item display-flex avatar pl-5 pb-0" data-target="slide-out-chat">
-                                    <span class="avatar-status avatar-online avatar-50"><img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img
+                                            src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png"
+                                            alt="avatar" />
                                     </span>
                                     <div class="user-content speech-bubble">
                                         <p class="medium-small">I will purchase it for sure.</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">Great, Feel free to get in touch on</p>
                                     </div>
                                 </li>
-                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0" data-target="slide-out-chat">
+                                <li class="collection-item display-flex avatar justify-content-end pl-5 pb-0"
+                                    data-target="slide-out-chat">
                                     <div class="user-content speech-bubble-right">
                                         <p class="medium-small">https://pixinvent.ticksy.com/</p>
                                     </div>
@@ -742,24 +841,30 @@ $page = "home";
                                 <div class="modal-content">
                                     <div class="bg-img-div"></div>
                                     <p class="modal-header right modal-close">
-                                        Skip Intro <span class="right"><i class="material-icons right-align">clear</i></span>
+                                        Skip Intro <span class="right"><i
+                                                class="material-icons right-align">clear</i></span>
                                     </p>
                                     <div class="carousel carousel-slider center intro-carousel">
                                         <div class="carousel-fixed-item center middle-indicator">
                                             <div class="left">
-                                                <button class="movePrevCarousel middle-indicator-text btn btn-flat purple-text waves-effect waves-light btn-prev">
-                                                    <i class="material-icons">navigate_before</i> <span class="hide-on-small-only">Prev</span>
+                                                <button
+                                                    class="movePrevCarousel middle-indicator-text btn btn-flat purple-text waves-effect waves-light btn-prev">
+                                                    <i class="material-icons">navigate_before</i> <span
+                                                        class="hide-on-small-only">Prev</span>
                                                 </button>
                                             </div>
 
                                             <div class="right">
-                                                <button class=" moveNextCarousel middle-indicator-text btn btn-flat purple-text waves-effect waves-light btn-next">
-                                                    <span class="hide-on-small-only">Next</span> <i class="material-icons">navigate_next</i>
+                                                <button
+                                                    class=" moveNextCarousel middle-indicator-text btn btn-flat purple-text waves-effect waves-light btn-next">
+                                                    <span class="hide-on-small-only">Next</span> <i
+                                                        class="material-icons">navigate_next</i>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="carousel-item slide-1">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-slide-1.png" alt="" class="responsive-img animated fadeInUp slide-1-img">
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-slide-1.png"
+                                                alt="" class="responsive-img animated fadeInUp slide-1-img">
                                             <h5 class="intro-step-title mt-7 center animated fadeInUp">Welcome to
                                                 Materialize</h5>
                                             <p class="intro-step-text mt-5 animated fadeInUp">Materialize is a
@@ -771,7 +876,8 @@ $page = "home";
                                                 Elements.</p>
                                         </div>
                                         <div class="carousel-item slide-2">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-features.png" alt="" class="responsive-img slide-2-img">
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-features.png"
+                                                alt="" class="responsive-img slide-2-img">
                                             <h5 class="intro-step-title mt-7 center">Example Request Information
                                             </h5>
                                             <p class="intro-step-text mt-5">Lorem ipsum dolor sit amet consectetur,
@@ -782,7 +888,8 @@ $page = "home";
                                                 <div class="col s6">
                                                     <div class="input-field">
                                                         <label for="first_name">Name</label>
-                                                        <input placeholder="Name" id="first_name" type="text" class="validate">
+                                                        <input placeholder="Name" id="first_name" type="text"
+                                                            class="validate">
                                                     </div>
                                                 </div>
                                                 <div class="col s6">
@@ -800,7 +907,8 @@ $page = "home";
                                             </div>
                                         </div>
                                         <div class="carousel-item slide-3">
-                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-app.png" alt="" class="responsive-img slide-1-img">
+                                            <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/intro-app.png"
+                                                alt="" class="responsive-img slide-1-img">
                                             <h5 class="intro-step-title mt-7 center">Showcase App Features</h5>
                                             <div class="row">
                                                 <div class="col m5 offset-m1 s12">
@@ -824,7 +932,8 @@ $page = "home";
                                                 </div>
                                                 <div class="row">
                                                     <div class="col s12 center">
-                                                        <button class="get-started btn waves-effect waves-light gradient-45deg-purple-deep-orange mt-3 modal-close">Get
+                                                        <button
+                                                            class="get-started btn waves-effect waves-light gradient-45deg-purple-deep-orange mt-3 modal-close">Get
                                                             Started</button>
                                                     </div>
                                                 </div>
