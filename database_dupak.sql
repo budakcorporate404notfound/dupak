@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2021 at 05:06 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: May 07, 2021 at 10:03 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -128,7 +127,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user.png',
-  `role` int(11) NOT NULL
+  `role` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -136,8 +135,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `image`, `role`) VALUES
-(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$5HnBXfHbhbbGi9xtM64XKONyvomOicoMp9PvEA70rBjBW1X/Ej0SG', 'B6ncRni2L8ZBGQNmrjdnZcLacN1GqRgOy8Mxj4F7IReBAFSwZp79votRRTxM', '2021-04-12 11:06:29', '2021-05-02 01:22:32', 'Screenshot (1).png', 0),
-(21, 'endah sri  mulyani gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$N/SwWpEO53FWw2rJaLumH.QzyJ7be51u6wJK.4JPzHlcx1eBK9gju', '0AHMp2PAVSNwIbeH3j7LUZs5BJBv3QdSCOjwu4GR29A5YHidLNdHvtPDxQvt', '2021-05-01 01:19:55', '2021-05-01 01:31:51', 'user.png', 0);
+(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$5HnBXfHbhbbGi9xtM64XKONyvomOicoMp9PvEA70rBjBW1X/Ej0SG', 'EhNkNZSkCD63wCUOwNwyLFQFmKpBiKy1XSc6Z97WHO4KSWc0OhIogHsoSBFx', '2021-04-12 11:06:29', '2021-05-07 00:02:31', 'nothing.jpg', 'user'),
+(21, 'endah sri  mulyani gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$N/SwWpEO53FWw2rJaLumH.QzyJ7be51u6wJK.4JPzHlcx1eBK9gju', '0AHMp2PAVSNwIbeH3j7LUZs5BJBv3QdSCOjwu4GR29A5YHidLNdHvtPDxQvt', '2021-05-01 01:19:55', '2021-05-01 01:31:51', 'user.png', '0');
 
 --
 -- Indexes for dumped tables
