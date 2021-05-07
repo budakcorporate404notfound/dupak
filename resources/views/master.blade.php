@@ -108,96 +108,104 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     </ul>
 
-                    <div class="card-body">
+                    {{-- <div class="card-body">
                         <form action="{{url('/home')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="image">
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
+                    @csrf
+                    <input type="file" name="image">
+                    <input type="submit" value="Upload">
+                    </form>
+                </div> --}}
 
-                    {{-- @if(Auth::user()->image)
+                {{-- @if(Auth::user()->image)
 <img class="image rounded-circle" src="{{asset('/storage/images/'.Auth::user()->image)}}" alt="profile_image"
-                    style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
-                    @endif --}}
+                style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+                @endif --}}
 
-                    <!-- translation-button-->
-                    <ul class="dropdown-content" id="translation-dropdown">
-                        <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="en"><i
-                                    class="flag-icon flag-icon-gb"></i> English</a></li>
-                        <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="fr"><i
-                                    class="flag-icon flag-icon-fr"></i> French</a></li>
-                        <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="pt"><i
-                                    class="flag-icon flag-icon-pt"></i> Portuguese</a></li>
-                        <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="de"><i
-                                    class="flag-icon flag-icon-de"></i> German</a></li>
-                    </ul>
-                    <!-- notifications-dropdown-->
-                    <ul class="dropdown-content" id="notifications-dropdown">
-                        <li>
-                            <h6>NOTIFICATIONS<span class="new badge">5</span></h6>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a class="black-text" href="#!"><span
-                                    class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new
-                                order has been placed!</a>
-                            <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">2 hours
-                                ago</time>
-                        </li>
-                        <li><a class="black-text" href="#!"><span
-                                    class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
-                            <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">3 days
-                                ago</time>
-                        </li>
-                        <li><a class="black-text" href="#!"><span
-                                    class="material-icons icon-bg-circle teal small">settings</span> Settings
-                                updated</a>
-                            <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">4 days
-                                ago</time>
-                        </li>
-                        <li><a class="black-text" href="#!"><span
-                                    class="material-icons icon-bg-circle deep-orange small">today</span> Director
-                                meeting started</a>
-                            <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">6 days
-                                ago</time>
-                        </li>
-                        <li><a class="black-text" href="#!"><span
-                                    class="material-icons icon-bg-circle amber small">trending_up</span> Generate
-                                monthly report</a>
-                            <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">1 week
-                                ago</time>
-                        </li>
-                    </ul>
-                    <!-- profile-dropdown-->
-                    <ul class="dropdown-content" id="profile-dropdown">
-                        <li><a class="grey-text text-darken-1" href="user-profile-page.html"><i
-                                    class="material-icons">person_outline</i> Profile</a></li>
-                        <li><a class="grey-text text-darken-1" href="app-chat.html"><i
-                                    class="material-icons">chat_bubble_outline</i> Chat</a></li>
-                        <li><a class="grey-text text-darken-1" href="page-faq.html"><i
-                                    class="material-icons">help_outline</i> Help</a></li>
-                        <li class="divider"></li>
-                        <li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i
-                                    class="material-icons">lock_outline</i> Lock</a></li>
-                        <li><a class="grey-text text-darken-1" href="user-login.html"><i
-                                    class="material-icons">keyboard_tab</i> Logout</a></li>
-                    </ul>
-                </div>
-                <nav class="display-none search-sm">
-                    <div class="nav-wrapper">
-                        <form id="navbarForm">
-                            <div class="input-field search-input-sm">
-                                <input class="search-box-sm mb-0" type="search" required="" id="search"
-                                    placeholder="Explore Materialize" data-search="template-list">
-                                <label class="label-icon" for="search"><i
-                                        class="material-icons search-sm-icon">search</i></label><i
-                                    class="material-icons search-sm-close">close</i>
-                                <ul class="search-list collection search-list-sm display-none"></ul>
-                            </div>
-                        </form>
+                <!-- translation-button-->
+                <ul class="dropdown-content" id="translation-dropdown">
+                    <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="en"><i
+                                class="flag-icon flag-icon-gb"></i> English</a></li>
+                    <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="fr"><i
+                                class="flag-icon flag-icon-fr"></i> French</a></li>
+                    <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="pt"><i
+                                class="flag-icon flag-icon-pt"></i> Portuguese</a></li>
+                    <li class="dropdown-item"><a class="grey-text text-darken-1" href="#!" data-language="de"><i
+                                class="flag-icon flag-icon-de"></i> German</a></li>
+                </ul>
+                <!-- notifications-dropdown-->
+                <ul class="dropdown-content" id="notifications-dropdown">
+                    <li>
+                        <h6>NOTIFICATIONS<span class="new badge">5</span></h6>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a class="black-text" href="#!"><span
+                                class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new
+                            order has been placed!</a>
+                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">2 hours
+                            ago</time>
+                    </li>
+                    <li><a class="black-text" href="#!"><span
+                                class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
+                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">3 days
+                            ago</time>
+                    </li>
+                    <li><a class="black-text" href="#!"><span
+                                class="material-icons icon-bg-circle teal small">settings</span> Settings
+                            updated</a>
+                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">4 days
+                            ago</time>
+                    </li>
+                    <li><a class="black-text" href="#!"><span
+                                class="material-icons icon-bg-circle deep-orange small">today</span> Director
+                            meeting started</a>
+                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">6 days
+                            ago</time>
+                    </li>
+                    <li><a class="black-text" href="#!"><span
+                                class="material-icons icon-bg-circle amber small">trending_up</span> Generate
+                            monthly report</a>
+                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">1 week
+                            ago</time>
+                    </li>
+                </ul>
+                <!-- profile-dropdown-->
+                <ul class="dropdown-content" id="profile-dropdown">
+                    <li><a class="grey-text text-darken-1" href="{{url('/profile')}}"><i
+                                class="material-icons">person_outline</i> Profile</a></li>
+                    <li><a class="grey-text text-darken-1" href="app-chat.html"><i
+                                class="material-icons">chat_bubble_outline</i> Chat</a></li>
+                    <li><a class="grey-text text-darken-1" href="page-faq.html"><i
+                                class="material-icons">help_outline</i> Help</a></li>
+                    <li class="divider"></li>
+                    <li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i
+                                class="material-icons">lock_outline</i> Lock</a></li>
+                    <li><a class="grey-text logout-confirm" href="{{route('logout')}}"><i
+                                class="material-icons">keyboard_tab</i> Logout</a>
+                        <!--
+                                    <form id="logout-form"  method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                        -->
+                    </li>
+
+                </ul>
+
+        </div>
+        <nav class="display-none search-sm">
+            <div class="nav-wrapper">
+                <form id="navbarForm">
+                    <div class="input-field search-input-sm">
+                        <input class="search-box-sm mb-0" type="search" required="" id="search"
+                            placeholder="Explore Materialize" data-search="template-list">
+                        <label class="label-icon" for="search"><i
+                                class="material-icons search-sm-icon">search</i></label><i
+                            class="material-icons search-sm-close">close</i>
+                        <ul class="search-list collection search-list-sm display-none"></ul>
                     </div>
-                </nav>
-            </nav>
+                </form>
+            </div>
+        </nav>
+        </nav>
         </div>
     </header>
     <!-- END: Header-->
@@ -1097,9 +1105,9 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <!--/ Theme Customizer -->
 
-    <a href="https://1.envato.market/materialize_admin" target="_blank"
+    {{-- <a href="https://1.envato.market/materialize_admin" target="_blank"
         class="btn btn-buy-now gradient-45deg-indigo-purple gradient-shadow white-text tooltipped buy-now-animated tada"
-        data-position="left" data-tooltip="Buy Now!"><i class="material-icons">add_shopping_cart</i></a>
+        data-position="left" data-tooltip="Buy Now!"><i class="material-icons">add_shopping_cart</i></a> --}}
 
     <!-- BEGIN: Footer-->
 
@@ -1193,6 +1201,25 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END PAGE VENDOR JS-->
     <script
         src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/data-tables.min.js">
+    </script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $('.logout-confirm').on('click', function(event) {
+            event.preventDefault();
+            const url = $(this).attr('href');
+            swal({
+                title: 'Apakah kamu yakin',
+                text: 'Ingin keluar dari aplikasi SulapBMN ?',
+                icon: 'warning',
+                buttons: ["Cancel", "Yes!"],
+            }).then(function(value) {
+                if (value) {
+                    window.location.href = url;
+                }
+            });
+        });
     </script>
 
 </body>

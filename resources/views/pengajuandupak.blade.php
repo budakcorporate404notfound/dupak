@@ -66,14 +66,12 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="container">
                 <div class="row">
                     <div class="col s10 m6 l6 breadcrumbs-left">
-                        <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down"><span>Form
-                                Wizard</span></h5>
+                        <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down"><span>Dupak
+                                Online</span></h5>
                         <ol class="breadcrumbs mb-0">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a>
+                            <li class="breadcrumb-item"><a href="">Pengajuan Dupak</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Form</a>
-                            </li>
-                            <li class="breadcrumb-item active">Form Wizard
+                            <li class="breadcrumb-item active">Form Pengajuan Dupak Online
                             </li>
                         </ol>
                     </div>
@@ -99,7 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="col s12">
             <div class="container">
 
-            @if ($message = Session::get('sukses'))
+                @if ($message = Session::get('sukses'))
                 <div class="card">
                     <div class="card-content">
                         <p class="caption mb-0">{{ $message }}</p>
@@ -107,6 +105,13 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 @endif
 
+                @if ($message = Session::get('gagal'))
+                <div class="card">
+                    <div class="card-content">
+                        <p class="caption mb-0">{{ $message }}</p>
+                    </div>
+                </div>
+                @endif
 
                 <!-- Non Linear Stepper -->
 
@@ -118,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                 <div class="card-content">
                                     <div class="card-header">
-                                        <h4 class="card-title">Pengajuan Dupak Secara Online</h4>
+                                        <h4 class="card-title">Form Pengajuan Dupak Online</h4>
                                         <p> Berkas usulan disimpan dalam file utama yang terdiri dari file administrasi
                                             dan
                                             file bukti fisik.</p>
@@ -126,7 +131,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     <ul class="stepper" id="nonLinearStepper">
                                         <li class="step active">
-                                            <div class="step-title waves-effect">Step 1 (File Administrasi)</div>
+                                            <div class="step-title waves-effect">Step 1 ( Upload Link File Administrasi
+                                                )</div>
 
                                             <div class="step-content">
                                                 <div class="row">
@@ -149,13 +155,31 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div> -->
 
                                                     <div class="form-group">
-                                                        <label>Nama</label>
-                                                        <input type="text" name="nama" class="form-control"
-                                                            placeholder="Nama pegawai .." required>
 
-                                                        @if($errors->has('nama'))
+
+                                                        <!-- hide input user id -->
+                                                        <div class="form-group">
+                                                            <label>User ID</label>
+                                                            <input type="hidden" name="user_id" class="form-control"
+                                                                placeholder="Nama pegawai .."
+                                                                value="{{Auth::user()->id}}" required readonly>
+
+                                                            @if($errors->has('user_id'))
+                                                            <div class="text-danger">
+                                                                {{ $errors->first('user"_id')}}
+                                                            </div>
+                                                            @endif
+
+                                                        </div>
+                                                         <!-- end hide input user id -->
+
+
+                                                        <input type="text" name="lu_administrasi" class="form-control"
+                                                            placeholder="Masukkan link file administrasi" required>
+
+                                                        @if($errors->has('lu_administrasi'))
                                                         <div class="text-danger">
-                                                            {{ $errors->first('nama')}}
+                                                            {{ $errors->first('lu_administrasi')}}
                                                         </div>
                                                         @endif
 
@@ -189,7 +213,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </li>
                                         <li class="step">
-                                            <div class="step-title waves-effect">Step 2 (File Bukti Fisik)</div>
+                                            <div class="step-title waves-effect">Step 2 ( Upload Link File Bukti Fisik )
+                                            </div>
                                             <div class="step-content">
                                                 <div class="row">
                                                     <div class="row">
@@ -210,33 +235,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text">
                                                             </div>
-                                                        </div> -->`
+                                                        </div> -->
 
-                                                        <div class="form-group">
-                                                        <label>Alamat</label>
-                                                        <input type="text" name="alamat" class="form-control"
-                                                            placeholder="Nama pegawai .." required>
+                                                        <div class="form-group"><input type="text" name="lu_buktifisik"
+                                                                class="form-control"
+                                                                placeholder="Masukkan link file bukti fisik " required>
 
-                                                        @if($errors->has('alamat'))
-                                                        <div class="text-danger">
-                                                            {{ $errors->first('alamat')}}
+                                                            @if($errors->has('lu_buktifisik'))
+                                                            <div class="text-danger">
+                                                                {{ $errors->first('lu_buktifisik')}}
+                                                            </div>
+                                                            @endif
+
                                                         </div>
-                                                        @endif
-
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>User ID</label>
-                                                        <input type="text" name="user_id" class="form-control"
-                                                            placeholder="Nama pegawai .." value="{{Auth::user()->id}}" required readonly>
-
-                                                        @if($errors->has('user_id'))
-                                                        <div class="text-danger">
-                                                            {{ $errors->first('user"_id')}}
-                                                        </div>
-                                                        @endif
-
-                                                    </div>
 
                                                     </div>
                                                 </div>
@@ -267,7 +278,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </li>
                                         <li class="step">
-                                            <div class="step-title waves-effect">Step 3 (Submit)</div>
+                                            <div class="step-title waves-effect">Step 3 ( Pengiriman File Administrasi dan Bukti Fisik )</div>
                                             <div class="step-content">
                                                 <div class="row">
 

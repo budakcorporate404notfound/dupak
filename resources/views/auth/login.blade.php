@@ -114,7 +114,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="row">
                                 <div class="input-field col s6 m6 l6">
-                                    <p class="margin medium-small"><a href="user-register.html">Register Now!</a></p>
+                                    <p class="margin medium-small"><a href="{{url('/register')}}">Register Now!</a></p>
                                 </div>
                                 <div class="input-field col s6 m6 l6">
                                     <p class="margin right-align medium-small">

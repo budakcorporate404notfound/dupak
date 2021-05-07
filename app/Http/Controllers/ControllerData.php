@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Data;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Session;
 use Validator;
@@ -26,20 +27,21 @@ class ControllerData extends Controller
 
     public function Historipengajuan()
     {
-        $Data = Data::all();
-        $User = User::all();
+
+        $User = User::where('id', '=', auth()->id())->get();
         return
 
-            view('historipengajuan', compact('Data', 'User'));
+            view('historipengajuan', compact('User'));
     }
 
     public function Pengajuandupakstore(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'alamat' => 'required',
-            'user_id' => 'required'
+            'lu_administrasi' => 'required',
+            'lu_buktifisik' => 'required',
+            'user_id' => 'required',
+            'keterangan' => ''
         ]);
 
         // $this->validate($request,[
@@ -49,19 +51,35 @@ class ControllerData extends Controller
         // ]);
 
         Data::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'user_id' => $request->user_id
+            'lu_administrasi' => $request->lu_administrasi,
+            'lu_buktifisik' => $request->lu_buktifisik,
+            'user_id' => $request->user_id,
+            'keterangan' => 'pengajuan dupak'
         ]);
         //     Session::flash('sukses','Ini notifikasi SUKSES');
         // return back();
 
         if ($validator->fails()) {
-            Session::flash('gagal', 'Ini notifikasi GAGAL');
+            Session::flash('gagal', 'pengajuan dokumen dupakmu gagal terupload');
             return back();
         } else {
-            Session::flash('sukses', 'Ini notifikasi SUKSES');
+            Session::flash('sukses', 'pengajuan dokumen dupakmu berhasil terupload');
             return back();
         }
+    }
+
+    public function Profile()
+    {
+        // $User = User::all();
+        return view('profile');
+    }
+
+    public function Logout(Request $request)
+    {
+
+        Auth::logout();
+        Session::flush();
+        auth()->logout();
+        return redirect('/login');
     }
 }

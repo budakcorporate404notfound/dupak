@@ -70,14 +70,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="row">
                         <div class="col s10 m6 l6 breadcrumbs-left">
                             <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                                <span>DataTable</span>
+                                <span>Dupak Online</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item"><a href="">Histori Pengajuan</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Table</a>
-                                </li>
-                                <li class="breadcrumb-item active">DataTable
+                                <li class="breadcrumb-item active"> Data Table Histori Pengajuan
                                 </li>
                             </ol>
                         </div>
@@ -105,11 +103,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="section section-data-tables">
                         <div class="card">
                             <div class="card-content">
-                                <p class="caption mb-0">Tables are a nice way to organize a lot of data. We provide a
-                                    few utility classes to help
-                                    you style your table as easily as possible. In addition, to improve mobile
-                                    experience, all tables on
-                                    mobile-screen widths are centered automatically.</p>
+                                <p class="caption mb-0">Kumpulan pengajuan dupak anda dapat dilihat pada table di bawah
+                                    ini. anda juga dapat melakukan pemantauan sampai dimana pengajuan dupak anda di
+                                    proses oleh
+                                    kami. Histori dari pengajuan dupak anda selalu direkam pada menu ini. jika terdapat
+                                    kekeliruan pada data dupak anda segera hubungi kami.</p>
                             </div>
                         </div>
 
@@ -124,46 +122,60 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>File Administrasi</th>
+                                                            <th>File Bukti Fisik</th>
+                                                            <th>Detail</th>
+
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
-
-                                                        @foreach($Data as $a)
+                                                        <?php $no = 0;?>
+                                                        @foreach($User as $t)
+                                                        @foreach($t->Datas as $a)
+                                                        <?php $no++ ;?>
                                                         <tr>
-
-                                                            @foreach($User as $t)
-                                                            <td>
-                                                                {{ $t->name }}
-                                                            </td>
-                                                            @endforeach
+                                                            <td> {{$no}} </td>
+                                                            <td> {{$t->name}} </td>
+                                                            <td> {{$t->email}} </td>
 
                                                             <td>
-                                                                {{ $a->nama }}
+                                                                <a href="{{$a->lu_administrasi}}" target="blank"
+                                                                    rel="noopener noreferrer"><i
+                                                                        class="material-icons">filter_drama</i></a>
+
                                                             </td>
 
-                                                            <td>{{ $a->alamat }}</td>
-                                                            <td>61</td>
-                                                            <td>2011/04/25</td>
-                                                            <td>$320,800</td>
+                                                            <td>
+                                                                <a href="{{$a->lu_buktifisik}}" target="_blank"
+                                                                    rel="noopener noreferrer"> <i
+                                                                        class="material-icons">filter_drama</i></a>
+
+                                                            </td>
+
+                                                            <td>
+
+                                                                <i class="material-icons">remove_red_eye</i>
+
+                                                            </td>
+
                                                         </tr>
+                                                        @endforeach
                                                         @endforeach
 
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>File Administrasi</th>
+                                                            <th>File Bukti Fisik</th>
+                                                            <th>File Bukti Fisik</th>
+
                                                         </tr>
                                                     </tfoot>
                                                 </table>

@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -26,7 +26,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function upload(Request $request)
+    public function Upload(Request $request)
     {
         if ($request->hasFile('image')) {
             $filename = $request->image->getClientOriginalName();
