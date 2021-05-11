@@ -357,6 +357,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     class="menu-title" data-i18n="Data Tables">Histori
                                     Pengajuan</span></a>
                         </li>
+
+                        <li class="bold"><a class="<?php if ($page == "pengecekanberkas") echo "active"; ?>"
+                                href="{{url('/pengecekanberkas')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Pengecekan Berkas</span></a>
+                        </li>
                     </ul>
                 </div>
 

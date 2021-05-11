@@ -25,6 +25,8 @@ class ControllerData extends Controller
         return view('pengajuandupak', ['User' => $User]);
     }
 
+  
+
     public function Historipengajuan()
     {
 
@@ -32,6 +34,12 @@ class ControllerData extends Controller
         return
 
             view('historipengajuan', compact('User'));
+    }
+
+    public function Pengecekanberkas()
+    {
+        $User = User::all();
+        return view('pengecekanberkas', compact('User'));
     }
 
     public function Pengajuandupakstore(Request $request)
@@ -82,4 +90,12 @@ class ControllerData extends Controller
         auth()->logout();
         return redirect('/login');
     }
+
+    public function Checkid($id)
+{
+    $data = data::find($id);
+   return view('pegawai_edit',compact('data'));
+}
+
+
 }

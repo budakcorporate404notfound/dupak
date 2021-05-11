@@ -19,8 +19,11 @@ use App\User;
 */
 Auth::routes(['verify' => true]);
 
+
+
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/', function () {return view('login');});
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/home', [App\Http\Controllers\HomeController::class, 'Upload'])->name('upload');
     Route::get('/profile', [App\Http\Controllers\ControllerData::class, 'Profile'])->name('Profile');
@@ -31,12 +34,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
        /* masukan code nya */
-    Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
+    
     });
 
     Route::middleware(['user'])->group(function () {
-        
+        Route::get('/pengecekanberkas', [App\Http\Controllers\ControllerData::class, 'Pengecekanberkas'])->name('Pengecekanberkas');
+        Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
         Route::get('/historipengajuan', [App\Http\Controllers\ControllerData::class, 'Historipengajuan'])->name('Historipengajuan');
         Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
+        Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
+        Route::get('/pengajuandupak/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Checkid');
+        Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Updateid');
     });
 });

@@ -1,5 +1,5 @@
 <?php
-$page = "historipengajuan";
+$page = "pengecekanberkas";
 ?>
 @extends('master')
 @section('konten')
@@ -54,6 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css"
         href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
+
 </head>
 <!-- END: Head-->
 
@@ -73,9 +74,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span>Dupak Online</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="">Histori Pengajuan</a>
+                                <li class="breadcrumb-item"><a href="">Pengcekan Berkas</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Data Table Histori Pengajuan
+                                <li class="breadcrumb-item active"> Data Table Pengajuan Dupak
                                 </li>
                             </ol>
                         </div>
@@ -127,7 +128,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <th>Tanggal Pengajuan</th>
                                                             <th>File Administrasi</th>
                                                             <th>File Bukti Fisik</th>
-                                                            <th>Detail</th>
+                                                            <th>Pengecekan</th>
 
                                                         </tr>
                                                     </thead>
@@ -158,7 +159,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                             <td>
 
-                                                                <i class="material-icons">remove_red_eye</i>
+                                                                <a class="purple-text logout-confirms"
+                                                                    href="{{url('pengajuandupak/check/'.$a->id)}}"><i
+                                                                        class="material-icons">edit</i></a>
 
                                                             </td>
 
@@ -174,7 +177,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <th>Tanggal Pengajuan</th>
                                                             <th>File Administrasi</th>
                                                             <th>File Bukti Fisik</th>
-                                                            <th>Detail</th>
+                                                            <th>Pengecekan</th>
 
                                                         </tr>
                                                     </tfoot>
@@ -210,6 +213,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script
         src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/customizer.min.js">
     </script>
+
     <!-- END THEME  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
 
