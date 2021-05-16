@@ -54,7 +54,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css"
         href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
-
 </head>
 <!-- END: Head-->
 
@@ -66,42 +65,63 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="main">
         <div class="row">
             <div class="breadcrumbs-inline pt-3 pb-1" id="breadcrumbs-wrapper">
+
                 <!-- Search for small screen-->
                 <div class="container">
+
+
+
+
+
+
+
                     <div class="row">
+
                         <div class="col s10 m6 l6 breadcrumbs-left">
                             <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                                <span>Dupak Online</span>
+                                <span>MyDupak</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="">Pengcekan Berkas</a>
+                                <li class="breadcrumb-item"><a href="">Pengecekan Berkas</a>
                                 </li>
                                 <li class="breadcrumb-item active"> Data Table Pengajuan Dupak
                                 </li>
                             </ol>
                         </div>
-                        <div class="col s2 m6 l6"><a
-                                class="btn btn-floating dropdown-settings waves-effect waves-light breadcrumbs-btn right"
-                                href="#!" data-target="dropdown1"><i class="material-icons">expand_more </i><i
-                                    class="material-icons right">arrow_drop_down</i></a>
-                            <ul class="dropdown-content" id="dropdown1" tabindex="0">
-                                <li tabindex="0"><a class="grey-text text-darken-2"
-                                        href="user-profile-page.html">Profile<span class="new badge red">2</span></a>
-                                </li>
-                                <li tabindex="0"><a class="grey-text text-darken-2"
-                                        href="app-contacts.html">Contacts</a></li>
-                                <li tabindex="0"><a class="grey-text text-darken-2" href="page-faq.html">FAQ</a></li>
-                                <li class="divider" tabindex="-1"></li>
-                                <li tabindex="0"><a class="grey-text text-darken-2" href="user-login.html">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="col s12">
                 <div class="container">
                     <div class="section section-data-tables">
+
+                         @if ($message = Session::get('diterima'))
+                            <div class="card-alert card gradient-45deg-light-blue-cyan">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
+                                </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            @endif
+
+                             @if ($message = Session::get('ditolak'))
+                            <div class="card-alert card gradient-45deg-amber-amber">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
+                                </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            @endif
+
+
+
                         <div class="card">
                             <div class="card-content">
                                 <p class="caption mb-0">Kumpulan pengajuan dupak anda dapat dilihat pada table di bawah
@@ -135,23 +155,23 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                     <tbody>
                                                         <?php $no = 0;?>
-                                                        @foreach($User as $t)
-                                                        @foreach($t->Datas as $a)
+                                                        @foreach($data as $t)
+
                                                         <?php $no++ ;?>
                                                         <tr>
                                                             <td> {{$no}} </td>
                                                             <td> {{$t->name}} </td>
-                                                            <td> {{date('d-m-Y', strtotime($a->created_at))}} </td>
+                                                            <td> {{date('d-m-Y', strtotime($t->created_at))}} </td>
 
                                                             <td>
-                                                                <a href="{{$a->lu_administrasi}}" target="blank"
+                                                                <a href="{{$t->lu_administrasi}}" target="blank"
                                                                     rel="noopener noreferrer"><i
                                                                         class="material-icons">filter_drama</i></a>
 
                                                             </td>
 
                                                             <td>
-                                                                <a href="{{$a->lu_buktifisik}}" target="_blank"
+                                                                <a href="{{$t->lu_buktifisik}}" target="_blank"
                                                                     rel="noopener noreferrer"> <i
                                                                         class="material-icons">filter_drama</i></a>
 
@@ -160,13 +180,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <td>
 
                                                                 <a class="purple-text logout-confirms"
-                                                                    href="{{url('pengajuandupak/check/'.$a->id)}}"><i
-                                                                        class="material-icons">edit</i></a>
+                                                                    href="{{url('pengajuandupak/check/'.$t->id)}}"><i
+                                                                        class="material-icons">pageview</i></a>
 
                                                             </td>
 
+
                                                         </tr>
-                                                        @endforeach
+
+                                                        <!-- Modal -->
+
+                                                        </div>
                                                         @endforeach
 
                                                     </tbody>
@@ -213,7 +237,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <script
         src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/customizer.min.js">
     </script>
-
     <!-- END THEME  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
 

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Data;
 use App\Models\User;
+use App\Models\Histori_data;
 use Illuminate\Support\Facades\Auth;
 
 use Session;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class ControllerData extends Controller
@@ -19,13 +21,29 @@ class ControllerData extends Controller
     //     return view('data', ['data' => $data]);
     // }
 
+    public function testquery()
+    {
+        $data = DB::table('histori_data')
+            ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
+            ->join('users', 'users.id', '=', 'data.user_id')
+            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('users.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator')
+            ->whereNull('histori_data.hasil_verifikator')
+
+            ->get();
+
+        print($data);
+    }
+
+
+
     public function User()
     {
         $User = User::all();
         return view('pengajuandupak', ['User' => $User]);
     }
 
-  
+
 
     public function Historipengajuan()
     {
@@ -38,9 +56,23 @@ class ControllerData extends Controller
 
     public function Pengecekanberkas()
     {
-        $User = User::all();
-        return view('pengecekanberkas', compact('User'));
+
+        $data = DB::table('histori_data')
+            ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
+            ->join('users', 'users.id', '=', 'data.user_id')
+            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator', 'data.user_id')
+            ->whereNull('histori_data.hasil_verifikator')
+
+            ->get();
+
+
+        return view('pengecekanberkas', compact('data'));
     }
+
+
+
+
 
     public function Pengajuandupakstore(Request $request)
     {
@@ -92,10 +124,53 @@ class ControllerData extends Controller
     }
 
     public function Checkid($id)
-{
-    $data = data::find($id);
-   return view('pegawai_edit',compact('data'));
-}
+    {
+
+        $data = DB::table('data')
+
+            ->join('users', 'users.id', '=', 'data.user_id')
+            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.lu_buktifisik', 'data.created_at', 'data.lu_buktifisik', 'data.user_id')
+            ->where('data.id', '=', $id)
+            ->get();
 
 
+        return view('pegawai_edit', compact('data'));
+    }
+
+    public function Updateid(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'data_id' => 'required',
+            'verifikator' => 'required',
+            'hasil_verifikator' => 'required',
+            'keterangan' => 'nullable'
+        ]);
+
+        // $this->validate($request,[
+        // 	'nama' => 'required',
+        //     'alamat' => 'required',
+        //     'user_id' => 'required'
+        // ]);
+
+        Histori_data::create([
+            'user_id' => $request->user_id,
+            'data_id' => $request->data_id,
+            'verifikator' => $request->verifikator,
+            'hasil_verifikator' => $request->hasil_verifikator,
+            'keterangan' => $request->keterangan
+        ]);
+        //     Session::flash('sukses','Ini notifikasi SUKSES');
+        // return back();
+
+        if ($validator->fails()) {
+            Session::flash('ditolak', 'pengajuan dokumen dupakmu ditolak');
+            return redirect()->route('Pengecekanberkas');
+        } else {
+            Session::flash('diterima', 'pengajuan dokumen dupakmu diterima');
+            return redirect()->route('Pengecekanberkas');
+        }
+    }
 }

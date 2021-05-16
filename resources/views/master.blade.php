@@ -325,7 +325,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="brand-sidebar">
             <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index.html"><img
                         src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/logo/materialize-logo.png"
-                        alt="materialize logo" /><span class="logo-text hide-on-med-and-down">Materialize</span></a><a
+                        alt="materialize logo" /><span class="logo-text hide-on-med-and-down">Dupak</span></a><a
                     class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out"
@@ -1161,8 +1161,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <script
         src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/dashboard-modern.js">
     </script>
-    <script src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/intro.min.js">
-    </script>
+    {{-- <script src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/scripts/intro.min.js">
+    </script> --}}
     <!-- END PAGE LEVEL JS-->
 
     <!-- END: Footer-->
@@ -1226,6 +1226,16 @@ License: You must have a valid license purchased only from themeforest(the above
             });
         });
     </script>
+
+     <script>
+            $(document).ready(function () {
+                $("#modelName").on("show.bs.modal", function (e) {
+                    var id = $(e.relatedTarget).data('target-id');
+                    $('#pass_id').val(id);
+                });
+            });
+
+</script>
 
 </body>
 

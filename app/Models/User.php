@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'image',
+        'role'
     ];
 
     /**
@@ -45,5 +46,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function Datas()
     {
         return $this->hasMany('App\Models\Data');
+        return $this->hasMany('App\Models\Histori_data');
     }
 }

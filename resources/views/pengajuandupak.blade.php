@@ -66,8 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="container">
                 <div class="row">
                     <div class="col s10 m6 l6 breadcrumbs-left">
-                        <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down"><span>Dupak
-                                Online</span></h5>
+                        <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down"><span>MyDupak</span></h5>
                         <ol class="breadcrumbs mb-0">
                             <li class="breadcrumb-item"><a href="">Pengajuan Dupak</a>
                             </li>
@@ -118,6 +117,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
+
                             <form method="post" action="{{url('/pengajuandupak/store')}}">
                                 {{ csrf_field() }}
 

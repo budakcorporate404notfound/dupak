@@ -17,13 +17,18 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes(['verify' => true]);
 
 
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', function () {return view('login');});
+    Route::get('/', function () {
+        return view('home');
+    });
+
+    Route::get('/testquery', [App\Http\Controllers\ControllerData::class, 'Testquery'])->name('Testquery');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/home', [App\Http\Controllers\HomeController::class, 'Upload'])->name('upload');
     Route::get('/profile', [App\Http\Controllers\ControllerData::class, 'Profile'])->name('Profile');
@@ -33,8 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [\App\Http\Controllers\ControllerData::class, 'Logout']);
 
     Route::middleware(['admin'])->group(function () {
-       /* masukan code nya */
-    
+        /* masukan code nya */
     });
 
     Route::middleware(['user'])->group(function () {
@@ -44,6 +48,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
         Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
         Route::get('/pengajuandupak/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Checkid');
-        Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Updateid');
+        Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Updateid'])->name('Updateid');
     });
 });
