@@ -138,6 +138,17 @@ class ControllerData extends Controller
         return view('pegawai_edit', compact('data'));
     }
 
+    public function HistoriCheckid($id)
+    {
+
+        $Data = Data::where('id', '=', $id)->get();
+
+        // print($Data);
+        return
+
+        view('historidatafull', compact('Data'));
+    }
+
     public function Updateid(Request $request)
     {
 

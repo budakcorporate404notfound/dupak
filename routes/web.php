@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
         Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
         Route::get('/pengajuandupak/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Checkid');
+        Route::get('/historipengajuan/check/{id}', [App\Http\Controllers\ControllerData::class, 'HistoriCheckid'])->name('HistoriCheckid');
         Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Updateid'])->name('Updateid');
     });
 });

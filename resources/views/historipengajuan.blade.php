@@ -158,7 +158,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                             <td>
 
-                                                                <i class="material-icons">pageview</i>
+                                                            <a class="purple-text logout-confirms"
+                                                                    href="{{url('historipengajuan/check/'.$a->id)}}"><i
+                                                                        class="material-icons">pageview</i></a>
 
                                                             </td>
 

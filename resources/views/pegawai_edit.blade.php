@@ -161,7 +161,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="input-field col s12">
                                                         <label>verifikator</label>
                                                         <input class="validate" required  type="text"
-                                                            name="verifikator" value="{{Auth::user()->id}}" readonly>
+                                                            name="verifikator" value="{{Auth::user()->name}}" readonly>
 
                                                         @if($errors->has('verifikator'))
                                                         <div class="text-danger">

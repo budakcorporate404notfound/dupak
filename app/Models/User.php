@@ -46,6 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function Datas()
     {
         return $this->hasMany('App\Models\Data');
+    }
+
+    public function Histori_datas()
+    {
         return $this->hasMany('App\Models\Histori_data');
     }
 }

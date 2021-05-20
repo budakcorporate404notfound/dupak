@@ -16,4 +16,9 @@ class Histori_data extends Model
     {
         return $this->belongsTo('App\Models\Data');
     }
+
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

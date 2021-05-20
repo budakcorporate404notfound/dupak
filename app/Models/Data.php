@@ -15,6 +15,9 @@ class Data extends Model
     public function User()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function Histori_datas(){
         return $this->hasMany('App\Models\Histori_data');
     }
 }

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2021 at 01:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: May 20, 2021 at 11:07 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -79,6 +78,13 @@ CREATE TABLE `histori_data` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `histori_data`
+--
+
+INSERT INTO `histori_data` (`id`, `user_id`, `data_id`, `verifikator`, `hasil_verifikator`, `keterangan`, `created_at`, `updated_at`) VALUES
+(39, 21, 7, 'kukuh binanto', 0, 'setelah dilakukan pengecekan link yang dikirimkan belum lengkap dan harus dilengkapi kembali. mohon ajukan ulang kembali', '2021-05-20 00:48:25', '2021-05-20 00:48:25');
+
 -- --------------------------------------------------------
 
 --
@@ -146,8 +152,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `image`, `role`) VALUES
-(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$5HnBXfHbhbbGi9xtM64XKONyvomOicoMp9PvEA70rBjBW1X/Ej0SG', 'ptErgTLItD7CAhOV50UAWDVAaPHL77fOmRxfEsZKwz5sUlebBHWEtcE0VyOX', '2021-04-12 11:06:29', '2021-05-06 20:43:13', 'Screenshot (2).png', 'user'),
-(21, 'endah sri  mulyani gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$mB22d1X9.ljagg8/Wigk9.oaarnRbrk1n25q.PrhIC8Bn1WvpaQ82', 'hd7e84amAdUyHovOLxWNznBxkf0QrtsmONwV00Cqr58lfTbklTZWZIMb04iR', '2021-05-01 01:19:55', '2021-05-12 08:43:20', 'user.png', '');
+(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$5HnBXfHbhbbGi9xtM64XKONyvomOicoMp9PvEA70rBjBW1X/Ej0SG', 'vXjYjM0DYVNhtP8SvfOLXpAvLW9cgJJD5SaTSmyxUDR1LuPOS33SLQg5ngc2', '2021-04-12 11:06:29', '2021-05-06 20:43:13', '274854.jpg', 'user'),
+(21, 'endah sri  mulyani gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$QDtHZJ16HpwP7cWMeNwBUuQuKAGe4hsOvu5jJcgvjKz55b.C54QlW', 'H5BBi96AGKHXGW2cB84i7pkhBGkVgtfXjmKfqGnwMV77gkuOmrETEDPJgJNC', '2021-05-01 01:19:55', '2021-05-20 00:50:04', 'user.png', 'user');
 
 --
 -- Indexes for dumped tables
@@ -211,7 +217,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `histori_data`
 --
 ALTER TABLE `histori_data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `migrations`
