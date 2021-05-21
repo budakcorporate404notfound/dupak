@@ -70,10 +70,6 @@ class ControllerData extends Controller
         return view('pengecekanberkas', compact('data'));
     }
 
-
-
-
-
     public function Pengajuandupakstore(Request $request)
     {
 
@@ -142,11 +138,11 @@ class ControllerData extends Controller
     {
 
         $Data = Data::where('id', '=', $id)->get();
-
+        
         // print($Data);
         return
 
-        view('historidatafull', compact('Data'));
+        view('historidatacheck', compact('Data'));
     }
 
     public function Updateid(Request $request)

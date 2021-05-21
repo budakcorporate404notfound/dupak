@@ -93,8 +93,30 @@ License: You must have a valid license purchased only from themeforest(the above
                                     @enderror
 
                                     <label for="password">Password</label>
+
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12 ml-2 mt-1">
+                                    <p>
+                                        <label>
+                                            <input class="form-check-input" type="checkbox" 
+                                            onclick="myFunction()" />
+                                            <span>Show Password</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                            <script>
+                                function myFunction() {
+                                    var x = document.getElementById("password");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                }
+                            </script>
                             <div class="row">
                                 <div class="col s12 m12 l12 ml-2 mt-1">
                                     <p>

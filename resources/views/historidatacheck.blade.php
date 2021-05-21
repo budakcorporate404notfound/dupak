@@ -128,44 +128,38 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <th>File Administrasi</th>
                                                             <th>File Bukti Fisik</th>
                                                             <th>Detail</th>
-                                                          
+                                                            <th>keterangan</th>
 
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <?php $no = 0;?>
-                                                        @foreach($User as $t)
-                                                        @foreach($t->Datas as $a)
+                                                        @foreach($Data as $t)
+                                                        @foreach($t->Histori_datas as $a)
                                                         <?php $no++ ;?>
                                                         <tr>
                                                             <td> {{$no}} </td>
-                                                            <td> {{$t->name}} </td>
-                                                            <td> {{date('d-m-Y', strtotime($a->created_at))}} </td>
+                                                            <td> {{$a->id}} </td>
+                                                            <td> {{$a->user_id}} </td>
 
                                                             <td>
-                                                                <a href="{{$a->lu_administrasi}}" target="blank"
-                                                                    rel="noopener noreferrer"><i
-                                                                        class="material-icons">filter_drama</i></a>
-
+                                                                {{$a->data_id}}
                                                             </td>
 
                                                             <td>
-                                                                <a href="{{$a->lu_buktifisik}}" target="_blank"
-                                                                    rel="noopener noreferrer"> <i
-                                                                        class="material-icons">filter_drama</i></a>
+                                                                {{$a->verifikator}}
+                                                            </td>
 
+                                                            <td>
+                                                                {{$a->hasil_verifikator}}
                                                             </td>
 
                                                             <td>
 
-                                                            <a class="purple-text logout-confirms"
-                                                                    href="{{url('historipengajuan/check/'.$a->id)}}"><i
-                                                                        class="material-icons">pageview</i></a>
+                                                                {{$a->keterangan}}
 
                                                             </td>
-
-                                                           
 
                                                         </tr>
                                                         @endforeach
@@ -180,8 +174,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <th>File Administrasi</th>
                                                             <th>File Bukti Fisik</th>
                                                             <th>Detail</th>
-                                                            
-
+                                                            <th>keterangan</th>
 
                                                         </tr>
                                                     </tfoot>

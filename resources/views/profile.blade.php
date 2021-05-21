@@ -105,19 +105,28 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <div class="section users-edit">
 
-                            @if ($message = Session::get('sukses'))
-                            <div class="card">
-                                <div class="card-content">
-                                    <p class="caption mb-0">{{ $message }}</p>
+                            
+                         @if ($message = Session::get('sukses'))
+                            <div class="card-alert card gradient-45deg-light-blue-cyan">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
                                 </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
                             </div>
                             @endif
 
-                            @if ($message = Session::get('gagal'))
-                            <div class="card">
-                                <div class="card-content">
-                                    <p class="caption mb-0">{{ $message }}</p>
+                             @if ($message = Session::get('gagal'))
+                            <div class="card-alert card gradient-45deg-amber-amber">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
                                 </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
                             </div>
                             @endif
                             <div class="card">
@@ -240,29 +249,100 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="col s12 m6">
                                                         <div class="row">
 
-                                                            <div class="col s12 input-field">
-                                                                <input id="password" type="password"
+                                                            <div class="col s6 input-field">
+                                                                <input id="current_passwords" type="password"
                                                                     class="form-control" name="current_password"
                                                                     autocomplete="current-password" required>
                                                                 <label>Current Password</label>
                                                             </div>
-                                                            <div class="col s12 input-field">
+
+                                                            <div class="col s6 input-field">
+                                                                <p>
+                                                                    <label>
+                                                                        <br>
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            onclick="myCurrentPassword()" />
+                                                                        <span>Show Current Password</span>
+                                                                    </label>
+                                                                </p>
+                                                            </div>
+
+                                                            <script>
+                                                                function myCurrentPassword() {
+                                                                    var x = document.getElementById(
+                                                                        "current_passwords");
+                                                                    if (x.type === "password") {
+                                                                        x.type = "text";
+                                                                    } else {
+                                                                        x.type = "password";
+                                                                    }
+                                                                }
+                                                            </script>
+
+                                                        </div>
+
+                                                        <div class="row">
+
+                                                            <div class="col s6 input-field">
                                                                 <input id="new_password" type="password"
                                                                     class="form-control" name="new_password"
                                                                     autocomplete="current-password" required>
                                                                 <label>New Password</label>
                                                             </div>
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s6 input-field">
+                                                                <p>
+                                                                    <label>
+                                                                        <br>
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            onclick="myNewPassword()" />
+                                                                        <span>Show New Password</span>
+                                                                    </label>
+                                                                </p>
+                                                            </div>
+
+                                                            <script>
+                                                                function myNewPassword() {
+                                                                    var x = document.getElementById(
+                                                                        "new_password");
+                                                                    if (x.type === "password") {
+                                                                        x.type = "text";
+                                                                    } else {
+                                                                        x.type = "password";
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </div>
+
+                                                        <div class="row">
+
+                                                            <div class="col s6 input-field">
                                                                 <input id="new_confirm_password" type="password"
                                                                     class="form-control" name="new_confirm_password"
                                                                     autocomplete="current-password" required>
                                                                 <label>New Confirm Password</label>
                                                             </div>
-
+                                                            <div class="col s6 input-field">
+                                                                <p>
+                                                                    <label>
+                                                                        <br>
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            onclick="myNewConfirmPassword()" />
+                                                                        <span>Show New Password</span>
+                                                                    </label>
+                                                                </p>
+                                                            </div>
+                                                            <script>
+                                                                function myNewConfirmPassword() {
+                                                                    var x = document.getElementById(
+                                                                        "new_confirm_password");
+                                                                    if (x.type === "password") {
+                                                                        x.type = "text";
+                                                                    } else {
+                                                                        x.type = "password";
+                                                                    }
+                                                                }
+                                                            </script>
                                                         </div>
-                                                    </div>
-                                                    <div class="col s12 m6">
-
                                                     </div>
 
                                                     <div class="col s12 display-flex justify-content-end mt-1">
