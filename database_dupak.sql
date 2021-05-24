@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 11:07 AM
+-- Generation Time: May 24, 2021 at 10:32 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -42,8 +42,10 @@ CREATE TABLE `data` (
 --
 
 INSERT INTO `data` (`id`, `lu_administrasi`, `lu_buktifisik`, `user_id`, `keterangan`, `created_at`, `updated_at`) VALUES
-(7, 'upload link ', 'upload link', 21, '', '2021-05-01 20:47:43', '2021-05-01 20:47:43'),
-(10, 'https://www.lipsum.com/feed/html', 'https://www.lipsum.com/feed/html', 19, '', '2021-05-01 21:42:09', '2021-05-01 21:42:09');
+(7, 'upload link ', 'upload link', 21, 'pengajuan dupak', '2021-05-01 20:47:43', '2021-05-01 20:47:43'),
+(10, 'https://www.lipsum.com/feed/html', 'https://www.lipsum.com/feed/html', 19, 'pengajuan dupak', '2021-05-01 21:42:09', '2021-05-01 21:42:09'),
+(16, 'test', 'TEST', 19, 'pengajuan dupak', '2021-05-21 01:47:51', '2021-05-21 01:47:51'),
+(17, 'test', 'test', 21, 'pengajuan dupak', '2021-05-23 21:36:44', '2021-05-23 21:36:44');
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,8 @@ CREATE TABLE `histori_data` (
   `data_id` int(11) NOT NULL,
   `verifikator` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hasil_verifikator` int(1) NOT NULL,
-  `keterangan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `catatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -82,8 +85,11 @@ CREATE TABLE `histori_data` (
 -- Dumping data for table `histori_data`
 --
 
-INSERT INTO `histori_data` (`id`, `user_id`, `data_id`, `verifikator`, `hasil_verifikator`, `keterangan`, `created_at`, `updated_at`) VALUES
-(39, 21, 7, 'kukuh binanto', 0, 'setelah dilakukan pengecekan link yang dikirimkan belum lengkap dan harus dilengkapi kembali. mohon ajukan ulang kembali', '2021-05-20 00:48:25', '2021-05-20 00:48:25');
+INSERT INTO `histori_data` (`id`, `user_id`, `data_id`, `verifikator`, `hasil_verifikator`, `keterangan`, `catatan`, `created_at`, `updated_at`) VALUES
+(59, 19, 10, 'kukuh binanto', 0, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41'),
+(60, 19, 10, 'kukuh binanto', 1, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41'),
+(61, 19, 10, 'kukuh binanto', 1, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41'),
+(62, 19, 10, 'kukuh binanto', 1, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41');
 
 -- --------------------------------------------------------
 
@@ -152,8 +158,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `image`, `role`) VALUES
-(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$5HnBXfHbhbbGi9xtM64XKONyvomOicoMp9PvEA70rBjBW1X/Ej0SG', 'vXjYjM0DYVNhtP8SvfOLXpAvLW9cgJJD5SaTSmyxUDR1LuPOS33SLQg5ngc2', '2021-04-12 11:06:29', '2021-05-06 20:43:13', '274854.jpg', 'user'),
-(21, 'endah sri  mulyani gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$QDtHZJ16HpwP7cWMeNwBUuQuKAGe4hsOvu5jJcgvjKz55b.C54QlW', 'H5BBi96AGKHXGW2cB84i7pkhBGkVgtfXjmKfqGnwMV77gkuOmrETEDPJgJNC', '2021-05-01 01:19:55', '2021-05-20 00:50:04', 'user.png', 'user');
+(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$P61snhVmHprNRAmYbXJdD.6oo7/DGo0bAtq4rCzA7DSwJ7RzLdMLu', 'Boshciin8uMXAjiMywfQ8xOzpMT4zQX0KIgOn6Fs30qWdbcRPjjeCMWsuqua', '2021-04-12 11:06:29', '2021-05-20 20:19:52', 'kai.png', 'user'),
+(21, 'endah sri  mulyani gradini gradini gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$QDtHZJ16HpwP7cWMeNwBUuQuKAGe4hsOvu5jJcgvjKz55b.C54QlW', 'hnprWAxhWrdjohP9ioz1PQjmjMCuLP8oH3v9XoWcwO54vDSO7acPmUEzc0gg', '2021-05-01 01:19:55', '2021-05-20 00:50:04', 'user.png', 'user');
 
 --
 -- Indexes for dumped tables
@@ -205,7 +211,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -217,7 +223,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `histori_data`
 --
 ALTER TABLE `histori_data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `migrations`

@@ -54,6 +54,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css"
         href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
+
+    <style>
+        div.ex3 {
+            height: 400px;
+            overflow: auto;
+        }
+    </style>
+
 </head>
 <!-- END: Head-->
 
@@ -113,7 +121,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!-- Page Length Options -->
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s8">
                                 <div class="card">
                                     <div class="card-content">
                                         <h4 class="card-title">Histori Pengajuan Dupak</h4>
@@ -122,14 +130,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Tanggal Pengajuan</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Detail</th>
-                                                          
-
+                                                            <th style="font-size:15px;">No</th>
+                                                            <th style="font-size:15px;">nama</th>
+                                                            <th style="font-size:15px;">tgl pengajuan</th>
+                                                            <th style="font-size:15px;">administrasi</th>
+                                                            <th style="font-size:15px;">bukti fisik</th>
+                                                            <th style="font-size:15px;">detail</th>
                                                         </tr>
                                                     </thead>
 
@@ -139,34 +145,32 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         @foreach($t->Datas as $a)
                                                         <?php $no++ ;?>
                                                         <tr>
-                                                            <td> {{$no}} </td>
-                                                            <td> {{$t->name}} </td>
-                                                            <td> {{date('d-m-Y', strtotime($a->created_at))}} </td>
+                                                            <td style="font-size:15px;"> {{$no}} </td>
+                                                            <td style="font-size:15px;"> {{$t->name}} </td>
+                                                            <td style="font-size:15px;">
+                                                                {{date('d-m-Y', strtotime($a->created_at))}} </td>
 
-                                                            <td>
+                                                            <td style="font-size:15px;">
                                                                 <a href="{{$a->lu_administrasi}}" target="blank"
                                                                     rel="noopener noreferrer"><i
-                                                                        class="material-icons">filter_drama</i></a>
+                                                                        class="material-icons small">filter_drama</i></a>
 
                                                             </td>
 
-                                                            <td>
+                                                            <td style="font-size:15px;">
                                                                 <a href="{{$a->lu_buktifisik}}" target="_blank"
                                                                     rel="noopener noreferrer"> <i
-                                                                        class="material-icons">filter_drama</i></a>
+                                                                        class="material-icons small">filter_drama</i></a>
 
                                                             </td>
 
-                                                            <td>
+                                                            <td style="font-size:15px;">
 
-                                                            <a class="purple-text logout-confirms"
+                                                                <a class="purple-text logout-confirms"
                                                                     href="{{url('historipengajuan/check/'.$a->id)}}"><i
-                                                                        class="material-icons">pageview</i></a>
+                                                                        class="material-icons small ">pageview</i></a>
 
                                                             </td>
-
-                                                           
-
                                                         </tr>
                                                         @endforeach
                                                         @endforeach
@@ -174,15 +178,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Tanggal Pengajuan</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Detail</th>
-                                                            
-
-
+                                                            <th style="font-size:15px;">No</th>
+                                                            <th style="font-size:15px;">nama</th>
+                                                            <th style="font-size:15px;">tgl pengajuan</th>
+                                                            <th style="font-size:15px;">administrasi</th>
+                                                            <th style="font-size:15px;">bukti fisik</th>
+                                                            <th style="font-size:15px;">detail</th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -191,6 +192,29 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             </div>
+
+                            
+                                <div class="col s4">
+                                <div class="ex3">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h4 class="card-title">Detail Histori Pengajuan Dupak</h4>
+                                            <div class="row">
+                                                <div class="col s12">
+
+                                                    <!-- ekstra konten dari konten histori -->
+
+                                                    @yield('extra-content')
+                                                    <!-- end ekstra konten dari konten histori -->
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

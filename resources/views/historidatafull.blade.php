@@ -36,7 +36,7 @@
                                                             <td>
 
                                                             {{$a->keterangan}}
-
+    
                                                             </td>
 
                                                         </tr>

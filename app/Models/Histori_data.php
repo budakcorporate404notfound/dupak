@@ -10,7 +10,7 @@ class Histori_data extends Model
     use HasFactory;
 
     protected $table = "Histori_data";
-    protected $fillable = ['user_id', 'data_id', 'verifikator', 'hasil_verifikator', 'keterangan'];
+    protected $fillable = ['user_id', 'data_id', 'verifikator', 'hasil_verifikator', 'keterangan', 'catatan'];
 
     public function Data()
     {

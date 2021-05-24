@@ -215,13 +215,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
 
                                                     <div class="input-field col s12">
-                                                        <textarea  name="keterangan"
+                                                        <textarea  name="catatan"
                                                             class="materialize-textarea validate"></textarea>
-                                                        <label for="ccomment0">Keterangan detail</label>
+                                                        <label for="ccomment0">catatan tambahan</label>
 
-                                                        @if($errors->has('keterangan'))
+                                                        @if($errors->has('catatan'))
                                                         <div class="text-danger">
-                                                            {{ $errors->first('keterangan')}}
+                                                            {{ $errors->first('catatan')}}
                                                         </div>
                                                         @endif
                                                     </div>

@@ -136,13 +136,13 @@ class ControllerData extends Controller
 
     public function HistoriCheckid($id)
     {
-
+        $User = User::where('id', '=', auth()->id())->get();
         $Data = Data::where('id', '=', $id)->get();
         
         // print($Data);
         return
 
-        view('historidatacheck', compact('Data'));
+        view('konten_histori', compact('Data','User'));
     }
 
     public function Updateid(Request $request)
@@ -153,7 +153,8 @@ class ControllerData extends Controller
             'data_id' => 'required',
             'verifikator' => 'required',
             'hasil_verifikator' => 'required',
-            'keterangan' => 'nullable'
+            'keterangan' => 'nullable',
+            'catatan' => 'nullable'
         ]);
 
         // $this->validate($request,[
@@ -167,16 +168,18 @@ class ControllerData extends Controller
             'data_id' => $request->data_id,
             'verifikator' => $request->verifikator,
             'hasil_verifikator' => $request->hasil_verifikator,
-            'keterangan' => $request->keterangan
+            'keterangan' => 'pengecekan berkas',
+            'catatan' => $request->catatan,
+            
         ]);
         //     Session::flash('sukses','Ini notifikasi SUKSES');
         // return back();
 
         if ($validator->fails()) {
-            Session::flash('ditolak', 'pengajuan dokumen dupakmu ditolak');
+            Session::flash('ditolak', 'terjadi kesalahan system. mohon check data yang di proses pada database');
             return redirect()->route('Pengecekanberkas');
         } else {
-            Session::flash('diterima', 'pengajuan dokumen dupakmu diterima');
+            Session::flash('diterima', 'proses pengajuan dupak');
             return redirect()->route('Pengecekanberkas');
         }
     }
