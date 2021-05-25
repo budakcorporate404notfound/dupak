@@ -24,13 +24,16 @@ class ControllerData extends Controller
     public function testquery()
     {
         $data = DB::table('histori_data')
-            ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
-            ->join('users', 'users.id', '=', 'data.user_id')
-            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
-            ->select('users.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator')
-            ->whereNull('histori_data.hasil_verifikator')
+         ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
+         ->join('users', 'users.id', '=', 'histori_data.user_id')
+          //->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+         ->select('users.id', 'users.name', 'histori_data.data_id', 'data.lu_buktifisik', 'data.lu_administrasi' )
+        // ->whereNull('histori_data.hasil_verifikator')
+         ->where('hasil_verifikator','=', '1')
+        ->groupBy('data_id')
+        ->havingRaw('count(data_id) = 1')
+        ->get();
 
-            ->get();
 
         print($data);
     }
@@ -52,6 +55,23 @@ class ControllerData extends Controller
         return
 
             view('historipengajuan', compact('User'));
+    }
+
+    public function Memo2TU()
+    {
+
+        $data = DB::table('histori_data')
+        ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
+        ->join('users', 'users.id', '=', 'histori_data.user_id')
+         //->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+        ->select('users.id', 'users.name', 'histori_data.data_id', 'data.lu_buktifisik', 'data.lu_administrasi' )
+       // ->whereNull('histori_data.hasil_verifikator')
+        ->where('hasil_verifikator','=', '1')
+       ->groupBy('data_id')
+       ->havingRaw('count(data_id) = 1')
+       ->get();
+
+        return view('memo2tu', compact('data'));
     }
 
     public function Pengecekanberkas()

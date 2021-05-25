@@ -50,5 +50,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/pengajuandupak/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Checkid');
         Route::get('/historipengajuan/check/{id}', [App\Http\Controllers\ControllerData::class, 'HistoriCheckid'])->name('HistoriCheckid');
         Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Updateid'])->name('Updateid');
+        Route::get('/memo2tu', [App\Http\Controllers\ControllerData::class, 'Memo2TU'])->name('Memo2TU');
     });
 });

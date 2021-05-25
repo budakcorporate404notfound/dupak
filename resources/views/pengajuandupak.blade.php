@@ -96,7 +96,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="col s12">
             <div class="container">
 
-                @if ($message = Session::get('sukses'))
+                <!-- @if ($message = Session::get('sukses'))
                 <div class="card">
                     <div class="card-content">
                         <p class="caption mb-0">{{ $message }}</p>
@@ -110,7 +110,31 @@ License: You must have a valid license purchased only from themeforest(the above
                         <p class="caption mb-0">{{ $message }}</p>
                     </div>
                 </div>
-                @endif
+                @endif -->
+
+                @if ($message = Session::get('sukses'))
+                            <div class="card-alert card gradient-45deg-light-blue-cyan">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
+                                </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            @endif
+
+                             @if ($message = Session::get('gagal'))
+                            <div class="card-alert card gradient-45deg-amber-amber">
+                                <div class="card-content white-text">
+                                    <p>
+                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
+                                </div>
+                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            @endif
 
                 <!-- Non Linear Stepper -->
 

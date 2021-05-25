@@ -362,6 +362,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 href="{{url('/pengecekanberkas')}}"><i class="material-icons">settings_ethernet</i><span
                                     class="menu-title" data-i18n="Form Wizard">Pengecekan Berkas</span></a>
                         </li>
+
+                        <li class="bold"><a class="<?php if ($page == "memo2tu") echo "active"; ?>"
+                                href="{{url('/memo2tu')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Memo2TU</span></a>
+                        </li>
                     </ul>
                 </div>
 
