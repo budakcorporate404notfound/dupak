@@ -69,12 +69,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- Search for small screen-->
                 <div class="container">
 
-
-
-
-
-
-
                     <div class="row">
 
                         <div class="col s10 m6 l6 breadcrumbs-left">
@@ -96,31 +90,29 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="container">
                     <div class="section section-data-tables">
 
-                         @if ($message = Session::get('diterima'))
-                            <div class="card-alert card gradient-45deg-light-blue-cyan">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('diterima'))
+                        <div class="card-alert card gradient-45deg-light-blue-cyan">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
                             </div>
-                            @endif
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
-                             @if ($message = Session::get('ditolak'))
-                            <div class="card-alert card gradient-45deg-amber-amber">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('ditolak'))
+                        <div class="card-alert card gradient-45deg-amber-amber">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
                             </div>
-                            @endif
-
-
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
                         <div class="card">
                             <div class="card-content">
@@ -143,77 +135,98 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                         <tr>
+
+                                                            <th width="50px">
+                                                                <label>
+                                                                    <input type="checkbox" id="master" />
+                                                                    <span></span>
+                                                                </label>
                                                             <th>No</th>
                                                             <th>Nama</th>
                                                             <th>File Administrasi</th>
                                                             <th>File Bukti Fisik</th>
+                                                            <th>Data Id</th>
                                                             <th>Pengecekan</th>
 
                                                         </tr>
                                                     </thead>
 
-                                                     <tbody>
+                                                    <tbody>
                                                         <?php $no = 0;?>
                                                         @foreach($data as $t)
 
                                                         <?php $no++ ;?>
-                                                        <tr>
-                                                            <td> {{$no}} </td>
+                                                        <tr id="tr_{{$t->id}}">
                                                             <td>
-                                                            {{$t->name}}
-
+                                                                <label>
+                                                                    <input type="checkbox" class="sub_chk"
+                                                                        data-id="{{$t->id}}" />
+                                                                    <span></span>
+                                                                </label>
                                                             </td>
                                                             
+                                                            <td> {{$no}} </td>
                                                             <td>
-                                                            {{$t->lu_administrasi}}
-                                                               
+                                                                {{$t->name}}
+
+                                                            </td>
+
+                                                            <td>
+                                                                {{$t->lu_administrasi}}
+
                                                             </td>
                                                             <td>
-                                                            {{$t->lu_buktifisik}}
+                                                                {{$t->lu_buktifisik}}
 
                                                             </td>
                                                             <td> {{$t->data_id}} </td>
-                                                            
-
-
-                                                          
-
-                                                            
-
-                                                         
+                                                            <td><a href="{{ url('myproducts',$t->id) }}"
+                                                                    class="btn btn-danger btn-sm"
+                                                                    data-tr="tr_{{$t->id}}" data-toggle="confirmation"
+                                                                    data-btn-ok-label="Delete"
+                                                                    data-btn-ok-icon="fa fa-remove"
+                                                                    data-btn-ok-class="btn btn-sm btn-danger"
+                                                                    data-btn-cancel-label="Cancel"
+                                                                    data-btn-cancel-icon="fa fa-chevron-circle-left"
+                                                                    data-btn-cancel-class="btn btn-sm btn-default"
+                                                                    data-title="Are you sure you want to delete ?"
+                                                                    data-placement="left" data-singleton="true">
+                                                                    Delete
+                                                                </a> </td>
 
                                                         </tr>
 
                                                         <!-- Modal -->
 
-                                                        </div>
-                                                        @endforeach
-
-                                                    </tbody> 
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Pengecekan</th>
-
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
                                             </div>
+                                            @endforeach
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th width="50px"><input type="checkbox" id="master"></th>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>File Administrasi</th>
+                                                    <th>File Bukti Fisik</th>
+                                                    <th>Data Id</th>
+                                                    <th>Pengecekan</th>
+
+                                                </tr>
+                                            </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="content-overlay"></div>
+
             </div>
+            <div class="content-overlay"></div>
         </div>
+    </div>
     </div>
     <!-- END: Page Main-->
 
@@ -237,6 +250,89 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN PAGE LEVEL JS-->
 
     <!-- END PAGE LEVEL JS-->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#master').on('click', function(e) {
+                if ($(this).is(':checked', true)) {
+                    $(".sub_chk").prop('checked', true);
+                } else {
+                    $(".sub_chk").prop('checked', false);
+                }
+            });
+            $('.delete_all').on('click', function(e) {
+                var allVals = [];
+                $(".sub_chk:checked").each(function() {
+                    allVals.push($(this).attr('data-id'));
+                });
+                if (allVals.length <= 0) {
+                    alert("Please select row.");
+                } else {
+                    var check = confirm("Are you sure you want to delete this row?");
+                    if (check == true) {
+                        var join_selected_values = allVals.join(",");
+                        $.ajax({
+                            url: $(this).data('url'),
+                            type: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: 'ids=' + join_selected_values,
+                            success: function(data) {
+                                if (data['success']) {
+                                    $(".sub_chk:checked").each(function() {
+                                        $(this).parents("tr").remove();
+                                    });
+                                    alert(data['success']);
+                                } else if (data['error']) {
+                                    alert(data['error']);
+                                } else {
+                                    alert('Whoops Something went wrong!!');
+                                }
+                            },
+                            error: function(data) {
+                                alert(data.responseText);
+                            }
+                        });
+                        $.each(allVals, function(index, value) {
+                            $('table tr').filter("[data-row-id='" + value + "']").remove();
+                        });
+                    }
+                }
+            });
+            $('[data-toggle=confirmation]').confirmation({
+                rootSelector: '[data-toggle=confirmation]',
+                onConfirm: function(event, element) {
+                    element.trigger('confirm');
+                }
+            });
+            $(document).on('confirm', function(e) {
+                var ele = e.target;
+                e.preventDefault();
+                $.ajax({
+                    url: ele.href,
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        } else {
+                            alert('Whoops Something went wrong!!');
+                        }
+                    },
+                    error: function(data) {
+                        alert(data.responseText);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 </body>
 
 </html>
