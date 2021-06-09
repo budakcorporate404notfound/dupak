@@ -60,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             @csrf
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <h5 class="ml-4">Sign in E-Dupak</h5>
+                                    <h5 class="ml-4">Sign in MyDupak</h5>
                                 </div>
                             </div>
                             <div class="row margin">
@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="col s12 m12 l12 ml-2 mt-1">
                                     <p>
                                         <label>
-                                            <input class="form-check-input" type="checkbox" 
+                                            <input class="form-check-input" type="checkbox"
                                             onclick="myFunction()" />
                                             <span>Show Password</span>
                                         </label>

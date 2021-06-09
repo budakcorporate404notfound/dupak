@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 11:06 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 09, 2021 at 06:24 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -89,10 +90,11 @@ CREATE TABLE `histori_data` (
 --
 
 INSERT INTO `histori_data` (`id`, `user_id`, `data_id`, `verifikator`, `hasil_verifikator`, `keterangan`, `catatan`, `created_at`, `updated_at`) VALUES
-(59, 19, 10, 'kukuh binanto', 1, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41'),
-(63, 21, 7, 'kukuh binanto', 0, 'pengecekan berkas', 'ajukan ulang', '2021-05-24 20:39:31', '2021-05-24 20:39:31'),
-(64, 19, 11, 'kukuh binanto', 1, 'memo2tu', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41'),
-(68, 19, 11, 'kukuh binanto', 1, 'pengecekan berkas', '-', '2021-05-24 00:13:41', '2021-05-24 00:13:41');
+(86, 19, 10, 'kukuh binanto', 1, 'pengecekan berkas', '', '2021-05-27 14:28:43', '2021-05-27 14:28:43'),
+(87, 19, 16, 'kukuh binanto', 1, 'pengecekan berkas', '', '2021-05-27 14:28:55', '2021-05-27 14:28:55'),
+(99, 21, 7, 'kukuh binanto', 1, 'pengecekan berkas 1', 'data sudah sesuai untuk mengajukan dupak', '2021-06-01 03:59:33', '2021-06-01 03:59:33'),
+(100, 21, 17, 'kukuh binanto', 0, 'pengecekan berkas 1', 'link yang dikirim tidak dapat dibuka', '2021-06-01 04:16:44', '2021-06-01 04:16:44'),
+(146, 21, 7, 'kukuh binanto', 1, 'pengiriman berkas ke tu', '-', '2021-06-01 06:01:59', '2021-06-01 06:01:59');
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `image`, `role`) VALUES
-(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$P61snhVmHprNRAmYbXJdD.6oo7/DGo0bAtq4rCzA7DSwJ7RzLdMLu', '3xBb86nnKYjyDkQbshBfFZnL6jh0mYbA9Xr8DHDFCagFUGfYly4MIgKBzYlm', '2021-04-12 11:06:29', '2021-05-20 20:19:52', 'kai.png', 'user'),
+(19, 'kukuh binanto', 'kukuhbinanto@gmail.com', '2021-04-12 11:10:01', '$2y$10$P61snhVmHprNRAmYbXJdD.6oo7/DGo0bAtq4rCzA7DSwJ7RzLdMLu', '3MBMIFJTRXnydGOmzdcbzn12mBNODkChj9y5aDjpFsp6tqjjWcaNgmPRdEB0', '2021-04-12 11:06:29', '2021-05-20 20:19:52', 'user.png', 'user'),
 (21, 'endah sri  mulyani gradini gradini gradini', 'esmgradini@gmail.com', '2021-05-01 01:22:27', '$2y$10$QDtHZJ16HpwP7cWMeNwBUuQuKAGe4hsOvu5jJcgvjKz55b.C54QlW', 'hnprWAxhWrdjohP9ioz1PQjmjMCuLP8oH3v9XoWcwO54vDSO7acPmUEzc0gg', '2021-05-01 01:19:55', '2021-05-20 00:50:04', 'user.png', 'user');
 
 --
@@ -226,7 +228,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `histori_data`
 --
 ALTER TABLE `histori_data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `migrations`

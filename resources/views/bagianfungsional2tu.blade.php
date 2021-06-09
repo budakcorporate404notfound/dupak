@@ -1,5 +1,5 @@
 <?php
-$page = "memo2tu";
+$page = "bagianfungsional2tu";
 ?>
 @extends('master')
 @section('konten')
@@ -54,6 +54,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css"
         href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <!-- END: Head-->
 
@@ -76,9 +78,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span>MyDupak</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="">Pengecekan Berkas</a>
+                                <li class="breadcrumb-item"><a href="">Bag. Fungsional 2 TU</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Data Table Pengajuan Dupak
+                                <li class="breadcrumb-item active"> Data Berkas Diterima
                                 </li>
                             </ol>
                         </div>
@@ -116,11 +118,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <div class="card">
                             <div class="card-content">
-                                <p class="caption mb-0">Kumpulan pengajuan dupak anda dapat dilihat pada table di bawah
-                                    ini. anda juga dapat melakukan pemantauan sampai dimana pengajuan dupak anda di
-                                    proses oleh
-                                    kami. Histori dari pengajuan dupak anda selalu direkam pada menu ini. jika terdapat
-                                    kekeliruan pada data dupak anda segera hubungi kami.</p>
+                                <p class="caption mb-0">Data Berkas yang telah dilakukan pengecekan pada tahap 1 dan
+                                    dipastikan file berkas telah sesuai akan ditampung pada menu ini. sebelum dikirim ke
+                                    TU. klik icon <a class="purple-text"><i class="material-icons">near_me</i></a> untuk
+                                    mengirimkan data ke TU.</p>
                             </div>
                         </div>
 
@@ -129,7 +130,10 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">Histori Pengajuan Dupak</h4>
+                                        <h4 class="card-title">Data Berkas Diterima</h4>
+                                        {{-- <button style="margin-bottom: 10px" class="btn btn-primary delete_all"
+                                            data-url="{{ url('myproductsDeleteAll') }}">Delete All Selected</button>
+                                        --}}
                                         <div class="row">
                                             <div class="col s12">
                                                 <table id="page-length-option" class="display">
@@ -141,12 +145,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <input type="checkbox" id="master" />
                                                                     <span></span>
                                                                 </label>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Data Id</th>
-                                                            <th>Pengecekan</th>
+                                                            </th>
+                                                            <th>no</th>
+                                                            <th>nama</th>
+                                                            <th>tgl pengajuan</th>
+                                                            <th>administrasi</th>
+                                                            <th>bukti fisik</th>
+                                                            {{-- <th>Data Id</th> --}}
+                                                            <th>kirim ke tu</th>
 
                                                         </tr>
                                                     </thead>
@@ -154,49 +160,68 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <tbody>
                                                         <?php $no = 0;?>
                                                         @foreach($data as $t)
+                                                        <form method="post" action="">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('PUT') }}
 
-                                                        <?php $no++ ;?>
-                                                        <tr id="tr_{{$t->id}}">
-                                                            <td>
-                                                                <label>
-                                                                    <input type="checkbox" class="sub_chk"
-                                                                        data-id="{{$t->id}}" />
-                                                                    <span></span>
-                                                                </label>
-                                                            </td>
-                                                            
-                                                            <td> {{$no}} </td>
-                                                            <td>
-                                                                {{$t->name}}
+                                                            <?php $no++ ;?>
+                                                            <tr id="tr_{{$t->id}}">
 
-                                                            </td>
+                                                                <input class="validate" required type="hidden"
+                                                                    name="data_id" value="{{ $t->id }}" readonly>
 
-                                                            <td>
-                                                                {{$t->lu_administrasi}}
+                                                                <td>
+                                                                    <label>
+                                                                        <input type="checkbox" class="sub_chk"
+                                                                            data-id="{{$t->id}}" />
+                                                                        <span></span>
+                                                                    </label>
+                                                                </td>
 
-                                                            </td>
-                                                            <td>
-                                                                {{$t->lu_buktifisik}}
+                                                                <td> {{$no}} </td>
+                                                                <td>
+                                                                    {{$t->name}}
 
-                                                            </td>
-                                                            <td> {{$t->data_id}} </td>
-                                                            <td><a href="{{ url('myproducts',$t->id) }}"
-                                                                    class="btn btn-danger btn-sm"
-                                                                    data-tr="tr_{{$t->id}}" data-toggle="confirmation"
-                                                                    data-btn-ok-label="Delete"
-                                                                    data-btn-ok-icon="fa fa-remove"
-                                                                    data-btn-ok-class="btn btn-sm btn-danger"
-                                                                    data-btn-cancel-label="Cancel"
-                                                                    data-btn-cancel-icon="fa fa-chevron-circle-left"
-                                                                    data-btn-cancel-class="btn btn-sm btn-default"
-                                                                    data-title="Are you sure you want to delete ?"
-                                                                    data-placement="left" data-singleton="true">
-                                                                    Delete
-                                                                </a> </td>
+                                                                </td>
 
-                                                        </tr>
+                                                                <td>
+                                                                    {{$t->created_at}}
 
-                                                        <!-- Modal -->
+                                                                </td>
+
+                                                                <td>
+                                                                    <a href="{{$t->lu_administrasi}}" target="blank"
+                                                                        rel="noopener noreferrer"><i
+                                                                            class="material-icons">filter_drama</i></a>
+
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{$t->lu_buktifisik}}" target="blank"
+                                                                        rel="noopener noreferrer"><i
+                                                                            class="material-icons">filter_drama</i></a>
+
+                                                                </td>
+                                                                <input type="hidden" value="{{$t->data_id}}">
+                                                                <td><a href="{{ url('bagianfungsional2tu',[$t->data_id, $t->user_id]) }}"
+                                                                        class="purple-text logout-confirms"
+                                                                        data-tr="tr_{{$t->id}}"
+                                                                        data-toggle="confirmation"
+                                                                        data-btn-ok-label="Delete"
+                                                                        data-btn-ok-icon="fa fa-remove"
+                                                                        data-btn-ok-class="btn btn-sm btn-danger"
+                                                                        data-btn-cancel-label="Cancel"
+                                                                        data-btn-cancel-icon="fa fa-chevron-circle-left"
+                                                                        data-btn-cancel-class="btn btn-sm btn-default"
+                                                                        data-title="Are you sure you want to delete ?"
+                                                                        data-placement="left" data-singleton="true">
+                                                                        <i class="material-icons">near_me</i>
+
+                                                                    </a> </td>
+
+                                                            </tr>
+
+                                                            <!-- Modal -->
+                                                        </form>
 
                                             </div>
                                             @endforeach
@@ -204,13 +229,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th width="50px"><input type="checkbox" id="master"></th>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>File Administrasi</th>
-                                                    <th>File Bukti Fisik</th>
-                                                    <th>Data Id</th>
-                                                    <th>Pengecekan</th>
+
+                                                            <th width="50px">
+                                                                <label>
+                                                                    <input type="checkbox" id="master" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </th>
+                                                            <th>no</th>
+                                                            <th>nama</th>
+                                                            <th>tgl pengajuan</th>
+                                                            <th>administrasi</th>
+                                                            <th>bukti fisik</th>
+                                                            {{-- <th>Data Id</th> --}}
+                                                            <th>kirim ke tu</th>
 
                                                 </tr>
                                             </tfoot>
@@ -266,9 +298,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     allVals.push($(this).attr('data-id'));
                 });
                 if (allVals.length <= 0) {
-                    alert("Please select row.");
+                    alert("Tolong pilih data terlebih dahulu.");
                 } else {
-                    var check = confirm("Are you sure you want to delete this row?");
+                    var check = confirm("Apakah anda yakin, dengan pilihan anda?");
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({

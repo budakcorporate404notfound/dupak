@@ -42,16 +42,23 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['user'])->group(function () {
-        Route::get('/pengecekanberkas', [App\Http\Controllers\ControllerData::class, 'Pengecekanberkas'])->name('Pengecekanberkas');
+
         Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
-        Route::get('/historipengajuan', [App\Http\Controllers\ControllerData::class, 'Historipengajuan'])->name('Historipengajuan');
         Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
-        Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
-        Route::get('/pengajuandupak/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkid'])->name('Checkid');
+        // Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
+
+        Route::get('/historipengajuan', [App\Http\Controllers\ControllerData::class, 'Historipengajuan'])->name('Historipengajuan');
         Route::get('/historipengajuan/check/{id}', [App\Http\Controllers\ControllerData::class, 'HistoriCheckid'])->name('HistoriCheckid');
-        Route::put('/pengajuandupak/update/{id}', [App\Http\Controllers\ControllerData::class, 'Updateid'])->name('Updateid');
-        Route::get('/memo2tu', [App\Http\Controllers\ControllerData::class, 'Memo2TU'])->name('Memo2TU');
-       
+
+        Route::get('/pengecekanberkas1', [App\Http\Controllers\ControllerData::class, 'Pengecekanberkas1'])->name('Pengecekanberkas1');
+        Route::get('/pengecekanberkas1/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkberkas1'])->name('Checkberkas1');
+        Route::put('/pengecekanberkas1/terimaatautolak/{id}', [App\Http\Controllers\ControllerData::class, 'Terimaatautolak1'])->name('Terimaatautolak1');
+
+
+        Route::get('/bagianfungsional2tu', [App\Http\Controllers\ControllerData::class, 'Bagianfungsional2tu'])->name('Bagianfungsional2tu');
+        Route::get('/bagianfungsional2tu/{data_id}/{user_id}', [App\Http\Controllers\ControllerData::class, 'Senttotu'])->name('Senttotu');
+        // Route::delete('myproductsDeleteAll', [App\Http\Controllers\ControllerData::class, 'DeleteAll'])->name('DeleteAll');
+        Route::get('/pengecekanberkas2', [App\Http\Controllers\ControllerData::class, 'Pengecekanberkas2'])->name('Pengecekanberkas2');
+        Route::get('/tu2bps', [App\Http\Controllers\ControllerData::class, 'Tu2bps'])->name('Tu2bps');
     });
-    Route::get('myproducts/{id}', [App\Http\Controllers\ControllerData::class, 'Destroy'])->name('Destroy');
 });

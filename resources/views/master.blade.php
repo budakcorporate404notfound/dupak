@@ -358,14 +358,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                     Pengajuan</span></a>
                         </li>
 
-                        <li class="bold"><a class="<?php if ($page == "pengecekanberkas") echo "active"; ?>"
-                                href="{{url('/pengecekanberkas')}}"><i class="material-icons">settings_ethernet</i><span
-                                    class="menu-title" data-i18n="Form Wizard">Pengecekan Berkas</span></a>
+                        <li class="bold"><a class="<?php if ($page == "pengecekanberkas1") echo "active"; ?>"
+                                href="{{url('/pengecekanberkas1')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Pengecekan Berkas I</span></a>
                         </li>
 
-                        <li class="bold"><a class="<?php if ($page == "memo2tu") echo "active"; ?>"
-                                href="{{url('/memo2tu')}}"><i class="material-icons">settings_ethernet</i><span
-                                    class="menu-title" data-i18n="Form Wizard">Memo2TU</span></a>
+                        <li class="bold"><a class="<?php if ($page == "bagianfungsional2tu") echo "active"; ?>"
+                                href="{{url('/bagianfungsional2tu')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Bag. Fungsional 2 TU</span></a>
+                        </li>
+
+                          <li class="bold"><a class="<?php if ($page == "pengecekanberkas2") echo "active"; ?>"
+                                href="{{url('/pengecekanberkas2')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Pengecekan Berkas II</span></a>
+                        </li>
+
+                          <li class="bold"><a class="<?php if ($page == "tu2bps") echo "active"; ?>"
+                                href="{{url('/tu2bps')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">TU2BPS</span></a>
                         </li>
                     </ul>
                 </div>

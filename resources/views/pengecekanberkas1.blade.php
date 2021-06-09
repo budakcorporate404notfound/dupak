@@ -1,5 +1,5 @@
 <?php
-$page = "pengecekanberkas";
+$page = "pengecekanberkas1";
 ?>
 @extends('master')
 @section('konten')
@@ -69,12 +69,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- Search for small screen-->
                 <div class="container">
 
-
-
-
-
-
-
                     <div class="row">
 
                         <div class="col s10 m6 l6 breadcrumbs-left">
@@ -82,9 +76,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span>MyDupak</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="">Pengecekan Berkas</a>
+                                <li class="breadcrumb-item"><a href="">Pengecekan Berkas I</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Data Table Pengajuan Dupak
+                                <li class="breadcrumb-item active"> Data Pengajuan Dupak
                                 </li>
                             </ol>
                         </div>
@@ -96,39 +90,38 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="container">
                     <div class="section section-data-tables">
 
-                         @if ($message = Session::get('diterima'))
-                            <div class="card-alert card gradient-45deg-light-blue-cyan">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('diterima'))
+                        <div class="card-alert card gradient-45deg-light-blue-cyan">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
                             </div>
-                            @endif
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
-                             @if ($message = Session::get('ditolak'))
-                            <div class="card-alert card gradient-45deg-amber-amber">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('ditolak'))
+                        <div class="card-alert card gradient-45deg-amber-amber">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
                             </div>
-                            @endif
-
-
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
                         <div class="card">
                             <div class="card-content">
-                                <p class="caption mb-0">Kumpulan pengajuan dupak anda dapat dilihat pada table di bawah
-                                    ini. anda juga dapat melakukan pemantauan sampai dimana pengajuan dupak anda di
-                                    proses oleh
-                                    kami. Histori dari pengajuan dupak anda selalu direkam pada menu ini. jika terdapat
-                                    kekeliruan pada data dupak anda segera hubungi kami.</p>
+                                <p class="caption mb-0">Seluruh pengajuan dupak yang dikirimkan akan
+                                    ditampung pada menu ini. silakan check terlebih dahulu file administrasi dan file
+                                    bukti fisik yang dikirimkan. kemudian klik icon <a
+                                        class="purple-text"><i class="material-icons">pageview</i></a>
+                                        untuk menentukan pengajuan berkas diterima atau ditolak
+                                </p>
                             </div>
                         </div>
 
@@ -137,7 +130,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">Histori Pengajuan Dupak</h4>
+                                        <h4 class="card-title">Data Pengajuan Dupak</h4>
                                         <div class="row">
                                             <div class="col s12">
                                                 <table id="page-length-option" class="display">
@@ -180,44 +173,43 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <td>
 
                                                                 <a class="purple-text logout-confirms"
-                                                                    href="{{url('pengajuandupak/check/'.$t->id)}}"><i
+                                                                    href="{{url('pengecekanberkas1/check/'.$t->id)}}"><i
                                                                         class="material-icons">pageview</i></a>
 
                                                             </td>
-
 
                                                         </tr>
 
                                                         <!-- Modal -->
 
-                                                        </div>
-                                                        @endforeach
-
-                                                    </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Tanggal Pengajuan</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Pengecekan</th>
-
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
                                             </div>
+                                            @endforeach
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>Tanggal Pengajuan</th>
+                                                    <th>File Administrasi</th>
+                                                    <th>File Bukti Fisik</th>
+                                                    <th>Pengecekan</th>
+
+                                                </tr>
+                                            </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="content-overlay"></div>
+
             </div>
+            <div class="content-overlay"></div>
         </div>
+    </div>
     </div>
     <!-- END: Page Main-->
 

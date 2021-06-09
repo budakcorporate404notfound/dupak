@@ -1,5 +1,5 @@
 <?php
-$page = "pengecekanberkas";
+$page = "pengecekanberkas1";
 ?>
 @extends('master')
 @section('konten')
@@ -75,7 +75,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <ol class="breadcrumbs mb-0">
                                 <li class="breadcrumb-item"><a href="">Pengecekan Berkas</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Verifikasi dan Validasi
+                                <li class="breadcrumb-item active"> Diterima atau Ditolak
                                 </li>
                             </ol>
                         </div>
@@ -103,11 +103,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="section section-data-tables">
                         <div class="card">
                             <div class="card-content">
-                                <p class="caption mb-0">Kumpulan pengajuan dupak anda dapat dilihat pada table di bawah
-                                    ini. anda juga dapat melakukan pemantauan sampai dimana pengajuan dupak anda di
-                                    proses oleh
-                                    kami. Histori dari pengajuan dupak anda selalu direkam pada menu ini. jika terdapat
-                                    kekeliruan pada data dupak anda segera hubungi kami.</p>
+                                <p class="caption mb-0">Setelah melakukan pengecekan file administrasi dan file bukti
+                                    fisik yang dikirimkan. Ambil keputusan apakah pengajuan diterima atau ditolak. Jika
+                                    pengajuan ditolak maka berikan komentar pada kolom catatan tambahan, agar pemohon
+                                    ketika mengajukan permohonan kembali tidak melakukan kesalahan yang sama.</p>
                             </div>
                         </div>
 
@@ -119,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="card-title">
                                             <div class="row">
                                                 <div class="col s12 m6 l10">
-                                                    <h4 class="card-title">HTML Validation Example</h4>
+                                                    <h4 class="card-title">Pengecekan Berkas (Diterima atau Ditolak)</h4>
                                                 </div>
                                                 <div class="col s12 m6 l2">
                                                 </div>
@@ -127,18 +126,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                         <div id="html-view-validations">
                                             @foreach ($data as $t)
-                                            <form method="post" action="{{url('pengajuandupak/update/'.$t->id)}}">
+                                            <form method="post"
+                                                action="{{url('pengecekanberkas1/terimaatautolak/'.$t->id)}}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('PUT') }}
 
-                                                <input class="validate" required  type="hidden"
-                                                            name="user_id" value="{{ $t->user_id }}" readonly>
+                                                <input class="validate" required type="hidden" name="user_id"
+                                                    value="{{ $t->user_id }}" readonly>
 
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <label>No data</label>
-                                                        <input class="validate" required  type="text"
-                                                            name="data_id" value="{{ $t->id }}" readonly>
+                                                        <input class="validate" required type="text" name="data_id"
+                                                            value="{{ $t->id }}" readonly>
 
                                                         @if($errors->has('id'))
                                                         <div class="text-danger">
@@ -148,9 +148,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
 
                                                     <div class="input-field col s12">
-                                                        <label>Username</label>
-                                                        <input class="validate" required
-                                                            type="text" value="{{$t->name}}" readonly>
+                                                        <label>nama pemohon</label>
+                                                        <input class="validate" required type="text"
+                                                            value="{{$t->name}}" readonly>
                                                         @if($errors->has('name'))
                                                         <div class="text-danger">
                                                             {{ $errors->first('name')}}
@@ -159,9 +159,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
 
                                                     <div class="input-field col s12">
-                                                        <label>verifikator</label>
-                                                        <input class="validate" required  type="text"
-                                                            name="verifikator" value="{{Auth::user()->name}}" readonly>
+                                                        <label>verifikator berkas</label>
+                                                        <input class="validate" required type="text" name="verifikator"
+                                                            value="{{Auth::user()->name}}" readonly>
 
                                                         @if($errors->has('verifikator'))
                                                         <div class="text-danger">
@@ -171,7 +171,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
 
                                                     <div class="input-field col s12">
-                                                        <label>link upload file administrasi</label>
+                                                        <label>link file administrasi</label>
                                                     </div>
 
                                                     <div class="input-field col s12">
@@ -182,8 +182,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </a>
                                                     </div>
 
-                                                      <div class="input-field col s12">
-                                                        <label>link upload file bukti fisik</label>
+                                                    <div class="input-field col s12">
+                                                        <label>link file bukti fisik</label>
                                                     </div>
 
                                                     <div class="input-field col s12">
@@ -215,7 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
 
                                                     <div class="input-field col s12">
-                                                        <textarea  name="catatan"
+                                                        <textarea name="catatan"
                                                             class="materialize-textarea validate"></textarea>
                                                         <label for="ccomment0">catatan tambahan</label>
 
