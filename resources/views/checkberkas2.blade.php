@@ -1,5 +1,5 @@
 <?php
-$page = "pengecekanberkas1";
+$page = "pengecekanberkas2";
 ?>
 @extends('master')
 @section('konten')
@@ -127,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div id="html-view-validations">
                                             @foreach ($data as $t)
                                             <form method="post"
-                                                action="{{url('pengecekanberkas1/terimaatautolak/'.$t->id)}}">
+                                                action="{{url('pengecekanberkas2/terimaatautolak/'.$t->id)}}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('PUT') }}
 

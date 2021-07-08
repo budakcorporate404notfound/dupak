@@ -347,6 +347,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li><a href="dashboard-analytics.html"><i class="material-icons">radio_button_unchecked</i><span
                                     data-i18n="Analytics">Analytics</span></a>
                         </li>
+
+                          <li class="bold"><a class="<?php if ($page == "seluruhpengajuan") echo "active"; ?>"
+                                href="{{url('/seluruhpengajuan')}}"><i class="material-icons">settings_ethernet</i><span
+                                    class="menu-title" data-i18n="Form Wizard">Seluruh Pengajuan</span></a>
+                        </li>
+
                         <li class="bold"><a class="<?php if ($page == "pengajuandupak") echo "active"; ?>"
                                 href="{{url('/pengajuandupak')}}"><i class="material-icons">settings_ethernet</i><span
                                     class="menu-title" data-i18n="Form Wizard">Pengajuan Dupak</span></a>

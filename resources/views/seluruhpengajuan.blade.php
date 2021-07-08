@@ -1,5 +1,5 @@
 <?php
-$page = "pengecekanberkas1";
+$page = "seluruhpengajuan";
 ?>
 @extends('master')
 @section('konten')
@@ -54,6 +54,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css"
         href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
+
+    <style>
+        div.ex3 {
+            height: 400px;
+            overflow: auto;
+        }
+    </style>
+
 </head>
 <!-- END: Head-->
 
@@ -65,151 +73,155 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="main">
         <div class="row">
             <div class="breadcrumbs-inline pt-3 pb-1" id="breadcrumbs-wrapper">
-
                 <!-- Search for small screen-->
                 <div class="container">
-
                     <div class="row">
-
                         <div class="col s10 m6 l6 breadcrumbs-left">
                             <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
                                 <span>MyDupak</span>
                             </h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="">Pengecekan Berkas I</a>
+                                <li class="breadcrumb-item"><a href="">Histori Pengajuan</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Data Pengajuan Dupak
+                                <li class="breadcrumb-item active"> Data Histori Pengajuan
                                 </li>
                             </ol>
                         </div>
-
+                        <div class="col s2 m6 l6"><a
+                                class="btn btn-floating dropdown-settings waves-effect waves-light breadcrumbs-btn right"
+                                href="#!" data-target="dropdown1"><i class="material-icons">expand_more </i><i
+                                    class="material-icons right">arrow_drop_down</i></a>
+                            <ul class="dropdown-content" id="dropdown1" tabindex="0">
+                                <li tabindex="0"><a class="grey-text text-darken-2"
+                                        href="user-profile-page.html">Profile<span class="new badge red">2</span></a>
+                                </li>
+                                <li tabindex="0"><a class="grey-text text-darken-2"
+                                        href="app-contacts.html">Contacts</a></li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="page-faq.html">FAQ</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="user-login.html">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col s12">
                 <div class="container">
                     <div class="section section-data-tables">
-
-                        @if ($message = Session::get('diterima'))
-                        <div class="card-alert card gradient-45deg-light-blue-cyan">
-                            <div class="card-content white-text">
-                                <p>
-                                    <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
-                            </div>
-                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        @endif
-
-                        @if ($message = Session::get('ditolak'))
-                        <div class="card-alert card gradient-45deg-amber-amber">
-                            <div class="card-content white-text">
-                                <p>
-                                    <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
-                            </div>
-                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        @endif
-
                         <div class="card">
                             <div class="card-content">
-                                <p class="caption mb-0">Seluruh pengajuan dupak yang dikirimkan akan
-                                    ditampung pada menu ini. silakan check terlebih dahulu file administrasi dan file
-                                    bukti fisik yang dikirimkan. kemudian klik icon <a
-                                        class="purple-text"><i class="material-icons">pageview</i></a>
-                                        untuk menentukan pengajuan berkas diterima atau ditolak
-                                </p>
+                                <p class="caption mb-0">Histori pengajuan dupak anda dapat dilihat pada table di bawah
+                                    ini. anda juga dapat melakukan pemantauan sampai dimana pengajuan dupak anda di
+                                    proses oleh
+                                    kami. Histori dari pengajuan dupak anda selalu direkam pada menu ini. jika terdapat
+                                    kekeliruan pada data dupak anda segera hubungi kami.</p>
                             </div>
                         </div>
 
                         <!-- Page Length Options -->
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s8">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">Data Pengajuan Dupak</h4>
+                                        <h4 class="card-title">Data Histori Pengajuan</h4>
                                         <div class="row">
                                             <div class="col s12">
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Tanggal Pengajuan</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Pengecekan</th>
-
+                                                            <th style="font-size:15px;">No</th>
+                                                            <th style="font-size:15px;">nama</th>
+                                                            <th style="font-size:15px;">tgl pengajuan</th>
+                                                            <th style="font-size:15px;">administrasi</th>
+                                                            <th style="font-size:15px;">bukti fisik</th>
+                                                            <th style="font-size:15px;">detail</th>
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <?php $no = 0;?>
-                                                        @foreach($data as $t)
-
+                                                        @foreach($User as $t)
+                                                        @foreach($t->Datas as $a)
                                                         <?php $no++ ;?>
                                                         <tr>
-                                                            <td> {{$no}} </td>
-                                                            <td> {{$t->name}} </td>
-                                                            <td> {{date('d-m-Y', strtotime($t->created_at))}} </td>
+                                                            <td style="font-size:15px;"> {{$no}} </td>
+                                                            <td style="font-size:15px;"> {{$t->name}} </td>
+                                                            <td style="font-size:15px;">
+                                                                {{date('d-m-Y', strtotime($a->created_at))}} </td>
 
-                                                            <td>
-                                                                <a href="{{$t->lu_administrasi}}" target="_blank"
+                                                            <td style="font-size:15px;">
+                                                                <a href="{{$a->lu_administrasi}}" target="blank"
                                                                     rel="noopener noreferrer"><i
-                                                                        class="material-icons">filter_drama</i></a>
+                                                                        class="material-icons small">filter_drama</i></a>
 
                                                             </td>
 
-                                                            <td>
-                                                                <a href="{{$t->lu_buktifisik}}" target="_blank"
+                                                            <td style="font-size:15px;">
+                                                                <a href="{{$a->lu_buktifisik}}" target="_blank"
                                                                     rel="noopener noreferrer"> <i
-                                                                        class="material-icons">filter_drama</i></a>
+                                                                        class="material-icons small">filter_drama</i></a>
 
                                                             </td>
 
-                                                            <td>
+                                                            <td style="font-size:15px;">
 
                                                                 <a class="purple-text logout-confirms"
-                                                                    href="{{url('pengecekanberkas1/check/'.$t->id)}}"><i
-                                                                        class="material-icons">pageview</i></a>
+                                                                    href="{{url('seluruhpengajuan/check/'.$a->id)}}"><i
+                                                                        class="material-icons small ">pageview</i></a>
 
                                                             </td>
-
                                                         </tr>
+                                                        @endforeach
+                                                        @endforeach
 
-                                                        <!-- Modal -->
-
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th style="font-size:15px;">No</th>
+                                                            <th style="font-size:15px;">nama</th>
+                                                            <th style="font-size:15px;">tgl pengajuan</th>
+                                                            <th style="font-size:15px;">administrasi</th>
+                                                            <th style="font-size:15px;">bukti fisik</th>
+                                                            <th style="font-size:15px;">detail</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
                                             </div>
-                                            @endforeach
-
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Tanggal Pengajuan</th>
-                                                    <th>File Administrasi</th>
-                                                    <th>File Bukti Fisik</th>
-                                                    <th>Pengecekan</th>
-
-                                                </tr>
-                                            </tfoot>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+                                <div class="col s4">
+                                <div class="ex3">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h4 class="card-title">Detail Histori Pengajuan Dupak</h4>
+                                            <div class="row">
+                                                <div class="col s12">
+
+                                                    <!-- ekstra konten dari konten histori -->
+
+                                                    @yield('extras-content')
+                                                    <!-- end ekstra konten dari konten histori -->
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                </div>
 
+                </div>
+                <div class="content-overlay"></div>
             </div>
-            <div class="content-overlay"></div>
         </div>
-    </div>
     </div>
     <!-- END: Page Main-->
 

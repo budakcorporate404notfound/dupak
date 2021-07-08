@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Validation\Rules\NotIn;
 
 class ControllerData extends Controller
 {
@@ -23,6 +23,7 @@ class ControllerData extends Controller
 
     public function testquery()
     {
+
         $data = DB::table('histori_data')
             ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
             ->join('users', 'users.id', '=', 'histori_data.user_id')
@@ -31,8 +32,9 @@ class ControllerData extends Controller
             // ->whereNull('histori_data.hasil_verifikator')
             ->where('hasil_verifikator', '=', '1')
             ->groupBy('data_id')
-            ->havingRaw('count(data_id) = 2')
+            ->havingRaw('count(data_id) = 3')
             ->get();
+
         return dd($data);
     }
 
@@ -40,6 +42,15 @@ class ControllerData extends Controller
     {
         $User = User::all();
         return view('pengajuandupak', ['User' => $User]);
+    }
+
+    public function Seluruhpengajuan()
+    {
+
+        $User = User::all();
+        return
+
+            view('seluruhpengajuan', compact('User'));
     }
 
 
@@ -69,20 +80,23 @@ class ControllerData extends Controller
         return view('bagianfungsional2tu', compact('data'));
     }
 
-    public function Pengecekanberkas1()
+    public function Tu2bps()
     {
-
         $data = DB::table('histori_data')
             ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
-            ->join('users', 'users.id', '=', 'data.user_id')
-            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
-            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator', 'data.user_id')
-            ->whereNull('histori_data.hasil_verifikator')
+            ->join('users', 'users.id', '=', 'histori_data.user_id')
+            //->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('histori_data.id', 'data.created_at', 'histori_data.user_id', 'users.name', 'histori_data.data_id', 'data.lu_buktifisik', 'data.lu_administrasi')
+            // ->whereNull('histori_data.hasil_verifikator')
+            ->where('hasil_verifikator', '=', '1')
+            ->groupBy('data_id')
+            ->havingRaw('count(data_id) = 3')
             ->get();
 
-
-        return view('pengecekanberkas1', compact('data'));
+        return view('tu2bps', compact('data'));
     }
+
+
 
     public function Pengajuandupakstore(Request $request)
     {
@@ -148,6 +162,21 @@ class ControllerData extends Controller
         return view('checkberkas1', compact('data'));
     }
 
+    public function Checkberkas2($id)
+    {
+
+        $data = DB::table('data')
+
+            ->join('users', 'users.id', '=', 'data.user_id')
+            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.lu_buktifisik', 'data.created_at', 'data.lu_buktifisik', 'data.user_id')
+            ->where('data.id', '=', $id)
+            ->get();
+
+
+        return view('checkberkas2', compact('data'));
+    }
+
     public function HistoriCheckid($id)
     {
         $User = User::where('id', '=', auth()->id())->get();
@@ -157,6 +186,17 @@ class ControllerData extends Controller
         return
 
             view('konten_histori', compact('Data', 'User'));
+    }
+
+    public function SeluruhCheckid($id)
+    {
+        $User = User::where('id', '=', auth()->id())->get();
+        $Data = Data::where('id', '=', $id)->get();
+
+        // print($Data);
+        return
+
+            view('konten_seluruh', compact('Data', 'User'));
     }
 
     public function Senttotu(Request $request, $data_id, $user_id)
@@ -219,6 +259,49 @@ class ControllerData extends Controller
     //     return response()->json(['success' => "Products Deleted successfully."]);
     // }
 
+    public function Senttobps(Request $request, $data_id, $user_id)
+    {
+        // DB::table("histori_data")->delete($id);
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'nullable',
+            'data_id' => 'nullable',
+            'verifikator' => 'nullable',
+            'hasil_verifikator' => 'nullable',
+            'keterangan' => 'nullable',
+            'catatan' => 'nullable'
+        ]);
+
+        // $this->validate($request,[
+        // 	'nama' => 'required',
+        //     'alamat' => 'required',
+        //     'user_id' => 'required'
+        // ]);
+
+        Histori_data::create([
+            'user_id' => $request->user_id,
+            'data_id' => $request->data_id,
+            'verifikator' => Auth::user()->name,
+            'hasil_verifikator' => '1',
+            'keterangan' => 'pengiriman berkas ke bps',
+            'catatan' =>  '-'
+
+        ]);
+        //     Session::flash('sukses','Ini notifikasi SUKSES');
+        // return back();
+
+        if ($validator->fails()) {
+            Session::flash('ditolak', 'terjadi kesalahan system. mohon check data yang di proses pada database');
+            return redirect()->route('Tu2bps');
+        } else {
+            Session::flash('diterima', 'proses pengajuan dupak');
+            return redirect()->route('Tu2bps');
+        }
+
+
+        // return response()->json(['success' => "Product Deleted successfully.", 'tr' => 'tr_' . $id]);
+    }
+
 
     public function Terimaatautolak1(Request $request)
     {
@@ -259,15 +342,85 @@ class ControllerData extends Controller
         }
     }
 
+    public function Terimaatautolak2(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'data_id' => 'required',
+            'verifikator' => 'required',
+            'hasil_verifikator' => 'required',
+            'keterangan' => 'nullable',
+            'catatan' => 'nullable'
+        ]);
+
+        // $this->validate($request,[
+        // 	'nama' => 'required',
+        //     'alamat' => 'required',
+        //     'user_id' => 'required'
+        // ]);
+
+        Histori_data::create([
+            'user_id' => $request->user_id,
+            'data_id' => $request->data_id,
+            'verifikator' => $request->verifikator,
+            'hasil_verifikator' => $request->hasil_verifikator,
+            'keterangan' => 'pengecekan berkas tahap 2',
+            'catatan' => $request->catatan,
+
+        ]);
+        //     Session::flash('sukses','Ini notifikasi SUKSES');
+        // return back();
+
+        if ($validator->fails()) {
+            Session::flash('ditolak', 'terjadi kesalahan system. mohon check data yang di proses pada database');
+            return redirect()->route('Pengecekanberkas2');
+        } else {
+            Session::flash('diterima', 'proses pengajuan dupak');
+            return redirect()->route('Pengecekanberkas2');
+        }
+    }
+
+    public function Pengecekanberkas1()
+    {
+
+        $data = DB::table('histori_data')
+            ->rightjoin(
+                'data',
+                'data.id',
+                '=',
+                'histori_data.data_id'
+            )
+            ->join(
+                'users',
+                'users.id',
+                '=',
+                'data.user_id'
+            )
+            //  ->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator', 'data.user_id')
+            ->whereNull('histori_data.hasil_verifikator')
+            ->get();
+
+
+        return view('pengecekanberkas1', compact('data'));
+    }
+
     public function Pengecekanberkas2()
     {
 
-        return view('pengecekanberkas2');
-    }
+        $data = DB::table('histori_data')
+            ->rightjoin('data', 'data.id', '=', 'histori_data.data_id')
+            ->join('users', 'users.id', '=', 'histori_data.user_id')
+            //->join('histori_data', 'histori_data.data_id', '=', 'data.id')
+            ->select('data.id', 'users.name', 'data.lu_administrasi', 'data.created_at', 'data.lu_buktifisik', 'histori_data.hasil_verifikator', 'data.user_id')
+            // ->whereNull('histori_data.hasil_verifikator')
+            // ->whereNotIn('histori_data.hasil_verifikator', [0])
+            // ->whereNotIn('histori_data.keterangan', ['pengecekan berkas tahap 2'])
+            ->groupBy('data_id')
+            ->havingRaw('count(data_id) = 2')
+            ->get();
 
-    public function Tu2bps()
-    {
-
-        return view('tu2bps');
+        return view('pengecekanberkas2', compact('data'));
     }
 }

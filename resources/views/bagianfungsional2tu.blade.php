@@ -190,13 +190,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </td>
 
                                                                 <td>
-                                                                    <a href="{{$t->lu_administrasi}}" target="blank"
+                                                                    <a href="{{$t->lu_administrasi}}" target="_blank"
                                                                         rel="noopener noreferrer"><i
                                                                             class="material-icons">filter_drama</i></a>
 
                                                                 </td>
                                                                 <td>
-                                                                    <a href="{{$t->lu_buktifisik}}" target="blank"
+                                                                    <a href="{{$t->lu_buktifisik}}" target="_blank"
                                                                         rel="noopener noreferrer"><i
                                                                             class="material-icons">filter_drama</i></a>
 

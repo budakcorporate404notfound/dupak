@@ -43,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['user'])->group(function () {
 
+        Route::get('/seluruhpengajuan', [App\Http\Controllers\ControllerData::class, 'Seluruhpengajuan'])->name('Seluruhpengajuan');
+        Route::get('/seluruhpengajuan/check/{id}', [App\Http\Controllers\ControllerData::class, 'SeluruhCheckid'])->name('SeluruhCheckid');
+
         Route::get('/pengajuandupak', [App\Http\Controllers\ControllerData::class, 'User'])->name('User');
         Route::post('/pengajuandupak/store', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
         // Route::post('/pengajuandupak/check', [App\Http\Controllers\ControllerData::class, 'Pengajuandupakstore'])->name('Pengajuandupakstore');
@@ -58,7 +61,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/bagianfungsional2tu', [App\Http\Controllers\ControllerData::class, 'Bagianfungsional2tu'])->name('Bagianfungsional2tu');
         Route::get('/bagianfungsional2tu/{data_id}/{user_id}', [App\Http\Controllers\ControllerData::class, 'Senttotu'])->name('Senttotu');
         // Route::delete('myproductsDeleteAll', [App\Http\Controllers\ControllerData::class, 'DeleteAll'])->name('DeleteAll');
+
         Route::get('/pengecekanberkas2', [App\Http\Controllers\ControllerData::class, 'Pengecekanberkas2'])->name('Pengecekanberkas2');
+        Route::get('/pengecekanberkas2/check/{id}', [App\Http\Controllers\ControllerData::class, 'Checkberkas2'])->name('Checkberkas2');
+        Route::put('/pengecekanberkas2/terimaatautolak/{id}', [App\Http\Controllers\ControllerData::class, 'Terimaatautolak2'])->name('Terimaatautolak2');
+
         Route::get('/tu2bps', [App\Http\Controllers\ControllerData::class, 'Tu2bps'])->name('Tu2bps');
+        Route::get('/tu2bps/{data_id}/{user_id}', [App\Http\Controllers\ControllerData::class, 'Senttobps'])->name('Senttobps');
     });
 });

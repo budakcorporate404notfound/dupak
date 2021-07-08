@@ -69,12 +69,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- Search for small screen-->
                 <div class="container">
 
-
-
-
-
-
-
                     <div class="row">
 
                         <div class="col s10 m6 l6 breadcrumbs-left">
@@ -96,31 +90,29 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="container">
                     <div class="section section-data-tables">
 
-                         @if ($message = Session::get('diterima'))
-                            <div class="card-alert card gradient-45deg-light-blue-cyan">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('diterima'))
+                        <div class="card-alert card gradient-45deg-light-blue-cyan">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">info_outline</i> SUCCESS : {{ $message }}</p>
                             </div>
-                            @endif
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
-                             @if ($message = Session::get('ditolak'))
-                            <div class="card-alert card gradient-45deg-amber-amber">
-                                <div class="card-content white-text">
-                                    <p>
-                                        <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
-                                </div>
-                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                        @if ($message = Session::get('ditolak'))
+                        <div class="card-alert card gradient-45deg-amber-amber">
+                            <div class="card-content white-text">
+                                <p>
+                                    <i class="material-icons">warning</i> WARNING : {{ $message }}</p>
                             </div>
-                            @endif
-
-
+                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
 
                         <div class="card">
                             <div class="card-content">
@@ -153,7 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </tr>
                                                     </thead>
 
-                                                    {{-- <tbody>
+                                                    <tbody>
                                                         <?php $no = 0;?>
                                                         @foreach($data as $t)
 
@@ -164,7 +156,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <td> {{date('d-m-Y', strtotime($t->created_at))}} </td>
 
                                                             <td>
-                                                                <a href="{{$t->lu_administrasi}}" target="blank"
+                                                                <a href="{{$t->lu_administrasi}}" target="_blank"
                                                                     rel="noopener noreferrer"><i
                                                                         class="material-icons">filter_drama</i></a>
 
@@ -180,44 +172,43 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <td>
 
                                                                 <a class="purple-text logout-confirms"
-                                                                    href="{{url('pengajuandupak/check/'.$t->id)}}"><i
+                                                                    href="{{url('pengecekanberkas2/check/'.$t->id)}}"><i
                                                                         class="material-icons">pageview</i></a>
 
                                                             </td>
-
 
                                                         </tr>
 
                                                         <!-- Modal -->
 
-                                                        </div>
-                                                        @endforeach
-
-                                                    </tbody> --}}
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Tanggal Pengajuan</th>
-                                                            <th>File Administrasi</th>
-                                                            <th>File Bukti Fisik</th>
-                                                            <th>Pengecekan</th>
-
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
                                             </div>
+                                            @endforeach
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>Tanggal Pengajuan</th>
+                                                    <th>File Administrasi</th>
+                                                    <th>File Bukti Fisik</th>
+                                                    <th>Pengecekan</th>
+
+                                                </tr>
+                                            </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="content-overlay"></div>
+
             </div>
+            <div class="content-overlay"></div>
         </div>
+    </div>
     </div>
     <!-- END: Page Main-->
 
